@@ -1,6 +1,8 @@
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SignUp from "./screen/signUp/signUp";
+import SignUp from "./screen/signUp";
+
+
 
 
 const App = () => {

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import './InputField.css'; 
-import { InputFieldProps } from '../../types/types';
+import { InputFieldProps } from '../../types';
+
 
 const InputField: React.FC<InputFieldProps> = ({ type, id, name, placeholder, value, onChange, error, icon }) => {
     const [showPassword, setShowPassword] = useState(false);
