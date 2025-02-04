@@ -1,17 +1,12 @@
-type Errors = {
-    [key: string]: string;
-    name: string;
-    email: string;
-    password: string;
-    phone: string;
-};
+import { Errors } from '../types/types';
 
 export const validateForm = (data: { [key: string]: string }) => {
     const errors: Errors = {
         name: '',
         email: '',
         password: '',
-        phone: ''
+        phone: '',
+        address: ''
     };
 
     // Name validation
@@ -38,6 +33,11 @@ export const validateForm = (data: { [key: string]: string }) => {
         errors.phone = 'Phone number is required';
     } else if (!/^\d{10}$/.test(data.phone)) {
         errors.phone = 'Phone number is invalid';
+    }
+
+    // Address validation
+    if (!data.address) {
+        errors.address = 'Address is required';
     }
 
     return errors;
