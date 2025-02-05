@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { faUser, faEnvelope, faLock, faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import "./signUp.css"
 import { validateForm } from "../../utils/validation";
-import AccountImage from '../../assets/account-rafiki.svg';
-import InputField from "../../component/input/InputField";
+import AccountImage from '../../assets/signup.svg';
+import InputField from "../../components/input/InputField";
 import { FormData } from "../../types";
 const SignUp = () => {
     const [formData, setFormData] = useState<FormData>({
