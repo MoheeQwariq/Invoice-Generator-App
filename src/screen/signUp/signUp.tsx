@@ -4,7 +4,7 @@ import { faUser, faEnvelope, faLock, faPhone, faMapMarkerAlt } from '@fortawesom
 import "./signUp.css"
 import { validateForm } from "../../utils/validation";
 import AccountImage from '../../assets/account-rafiki.svg';
-import InputField from "../../component/input/InputField";
+import InputField from "../../components/inputField/InputField";
 import { FormData } from "../../types";
 const SignUp = () => {
     const [formData, setFormData] = useState<FormData>({
