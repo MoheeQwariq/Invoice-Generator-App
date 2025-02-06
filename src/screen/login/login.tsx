@@ -1,7 +1,7 @@
 import "./login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Image from "../../assets/invoice.jpg";
+import Image from "../../assets/logIn.svg";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import InputField from "../../components/input";
 import { validateUser } from "../../utils/validation";
@@ -31,14 +31,11 @@ const Login = () => {
           emailError: "Invalid email",
           passwordError: "Invalid password",
         });
-        handelClear();
+   
       }
     }
   };
 
-  const handelClear = () => {
-    setUser(initialUser);
-  };
 
   const checkUserInLocalStorage = (user: IUser) => {
     const storedUsers = localStorage.getItem("users");
