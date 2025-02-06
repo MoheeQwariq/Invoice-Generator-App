@@ -27,3 +27,8 @@ export type Errors = {
     phone: string;
     address: string;
 };
+
+export interface IUser{
+    email: string;
+    password: string;  
+} 
