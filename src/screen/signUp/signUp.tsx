@@ -16,7 +16,6 @@ const SignUp = () => {
     });
 
     const [errors, setErrors] = useState<Partial<FormData>>({});
-    const [isSubmitting, setIsSubmitting] = useState(false);
     const navigate = useNavigate();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +26,7 @@ const SignUp = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setIsSubmitting(true);
+        
 
         const formErrors = validateForm(formData);
         setErrors(formErrors);
@@ -40,7 +39,6 @@ const SignUp = () => {
             if (users.some((user) => user.email === formData.email)) {
                 console.log("This email is already registered.");
                 setErrors((prev) => ({ ...prev, email: "Email already in use" }));
-                setIsSubmitting(false);
                 return;
             }
 
@@ -53,14 +51,16 @@ const SignUp = () => {
             console.log("Form contains errors.");
         }
 
-        setIsSubmitting(false);
+        
     };
 
     return (
+     <div className="sign-up-page">
         <div className="sign-up-container">
             <div className="sign-up-form">
-                <h1>Create new account</h1>
+                <div className="container">
                 <form onSubmit={handleSubmit}>
+                <h1>Create new account</h1>
                     <InputField
                         type="text"
                         id="name"
@@ -111,15 +111,23 @@ const SignUp = () => {
                         error={errors.address}
                         icon={faMapMarkerAlt}
                     />
-                    <button type="submit" disabled={isSubmitting}>
-                        {isSubmitting ? "Signing Up..." : "Sign Up"}
-                    </button>
+                    <button type="submit">Sign Up</button>
                 </form>
+
+                <p className="signup-text">
+                   Already have an account?{" "}
+                   <span className="signup-link" onClick={() => navigate("/Login")}>
+                     Log in
+                   </span>
+                 </p>
+               </div>
             </div>
             <div className="sign-up-image">
                 <img src={AccountImage} alt="Sign Up" />
             </div>
         </div>
+    </div>
+
     );
 };
 
