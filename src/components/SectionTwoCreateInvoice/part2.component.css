@@ -1,0 +1,457 @@
+.MainPart2 {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  width: 100%;
+  max-width:550px;
+}
+
+
+
+.EditButton {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.ClientDetails {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  gap: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ClientInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.ClientImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.CompanyInfo {
+  margin-top: 10px;
+}
+
+.BasicInfo {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  gap: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.AddCustomer {
+  background: #6a1b9a;
+  color: white;
+  text-align: center;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.AddCustomer:hover {
+  background: #6a1b9a;
+  color: white;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+p {
+  margin: 2px 0;
+  font-size: 0.9rem;
+  color: gray;
+}
+
+.BasicInfoInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+}
+
+.client-detailsAll {
+  background: var(--text-color-pure-white, #ffffff);
+  border-radius: 10px;
+  border-style: solid;
+  border-color: var(--gray-gray-3, #f5f5f5);
+  border-width: 1px;
+  padding: 20px 25px 25px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.client-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  width: 325px;
+  position: relative;
+}
+
+.client-detailsText {
+  color: var(--text-color-text-1, #1b212d);
+  text-align: left;
+  font-family: var(--size-16-size-16-semibold-font-family,
+      "KumbhSans-SemiBold",
+      sans-serif);
+  font-size: var(--size-16-size-16-semibold-font-size, 16px);
+  font-weight: var(--size-16-size-16-semibold-font-weight, 600);
+  position: relative;
+}
+
+.image {
+  border-radius: 50%;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  position: relative;
+}
+
+.UserDetails {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.UserName {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.UserNameText1 {
+  color: var(--text-color-text-1, #1b212d);
+  text-align: left;
+  font-family: var(--size-16-size-16-semibold-font-family,
+      "KumbhSans-SemiBold",
+      sans-serif);
+  font-size: var(--size-16-size-16-semibold-font-size, 16px);
+  font-weight: var(--size-16-size-16-semibold-font-weight, 600);
+  position: relative;
+}
+
+.UserNameText2 {
+  color: var(--text-color-text-2, #929eae);
+  text-align: left;
+  font-family: var(--size-16-size-16-regular-font-family,
+      "KumbhSans-Regular",
+      sans-serif);
+  font-size: var(--size-16-size-16-regular-font-size, 16px);
+  font-weight: var(--size-16-size-16-regular-font-weight, 400);
+  position: relative;
+}
+
+.line {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: var(--gray-gray-3, #f5f5f5);
+  border-width: 1px 0 0 0;
+  flex-shrink: 0;
+  width: 320px;
+  height: 0px;
+  position: relative;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+
+.companyDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.CompanyName {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.CompanyName1 {
+  color: var(--text-color-text-1, #1b212d);
+  text-align: left;
+  font-family: var(--size-16-size-16-semibold-font-family,
+      "KumbhSans-SemiBold",
+      sans-serif);
+  font-size: var(--size-16-size-16-semibold-font-size, 16px);
+  font-weight: var(--size-16-size-16-semibold-font-weight, 600);
+  position: relative;
+}
+
+.ImageVerify {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+
+.CompanyName2 {
+  color: var(--text-color-text-2, #929eae);
+  text-align: left;
+  font-family: var(--size-16-size-16-regular-font-family,
+      "KumbhSans-Regular",
+      sans-serif);
+  font-size: var(--size-16-size-16-regular-font-size, 16px);
+  font-weight: var(--size-16-size-16-regular-font-weight, 400);
+  position: relative;
+}
+
+.add-customer {
+  color: #ffff;
+  text-align: center;
+  background: #6a1b9a;
+  border-radius: 10px;
+  padding: 15px 20px 16px 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 100%;
+  position: relative;
+  font-family: var(--size-14-size-14-semibold-font-family,
+      "KumbhSans-SemiBold",
+      sans-serif);
+  font-size: var(--size-14-size-14-semibold-font-size, 14px);
+  font-weight: var(--size-14-size-14-semibold-font-weight, 600);
+  position: relative;
+}
+
+
+.basicInfo {
+  background: var(--text-color-pure-white, #ffffff);
+  border-radius: 10px;
+  border-style: solid;
+  border-color: var(--gray-gray-3, #f5f5f5);
+  border-width: 1px;
+  padding: 25px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+}
+
+.basicInfoText {
+  color: var(--text-color-text-1, #1b212d);
+  text-align: left;
+  font-family: var(--extra-font-size-18-semibold-font-family,
+      "KumbhSans-SemiBold",
+      sans-serif);
+  font-size: var(--extra-font-size-18-semibold-font-size, 18px);
+  font-weight: var(--extra-font-size-18-semibold-font-weight, 600);
+  position: relative;
+}
+
+.MainBasicInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.InputsBasicInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 100%;
+  position: relative;
+}
+
+.InvoiceDate {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.InvoiceDateText {
+  color: var(--text-color-text-2, #929eae);
+  text-align: left;
+  font-family: var(--size-14-size-14-regular-font-family,
+      "KumbhSans-Regular",
+      sans-serif);
+  font-size: var(--size-14-size-14-regular-font-size, 14px);
+  font-weight: var(--size-14-size-14-regular-font-weight, 400);
+  position: relative;
+}
+
+.InputDate {
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+}
+
+.inputText {
+  color: var(--text-color-text-1, #1b212d);
+  text-align: left;
+  font-family: var(--size-14-size-14-medium-font-family,
+      "KumbhSans-Medium",
+      sans-serif);
+  font-size: var(--size-14-size-14-medium-font-size, 14px);
+  font-weight: var(--size-14-size-14-medium-font-weight, 500);
+  width: 100%;
+}
+
+.InvoiceButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 100%;
+  position: relative;
+
+}
+
+
+
+.SendInvoice {
+  color: #ffff;
+  text-align: center;
+  background: #6a1b9a;
+  border-radius: 10px;
+  padding: 15px 20px 16px 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 100%;
+  position: relative;
+  font-family: var(--size-14-size-14-semibold-font-family,
+      "KumbhSans-SemiBold",
+      sans-serif);
+  font-size: var(--size-14-size-14-semibold-font-size, 14px);
+  font-weight: var(--size-14-size-14-semibold-font-weight, 600);
+  position: relative;
+}
+
+.OtherButton {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.previewDiv {
+  background: var(--gray-gray-2, #f8f8f8);
+  border-radius: 10px;
+  padding: 14px 34px 14px 35px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 48px;
+  position: relative;
+}
+
+.eyeImage {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  overflow: visible;
+
+}
+
+.previewText {
+  color: #6a1b9a;
+  text-align: center;
+  font-family: var(--size-14-size-14-semibold-font-family,
+      "KumbhSans-SemiBold",
+      sans-serif);
+  font-size: var(--size-14-size-14-semibold-font-size, 14px);
+  font-weight: var(--size-14-size-14-semibold-font-weight, 600);
+  position: relative;
+}
+
+
+.downloadImage {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  overflow: visible;
+}
+
+.downloadText {
+  color: #6a1b9a;
+  text-align: center;
+  font-family: var(--size-14-size-14-semibold-font-family,
+      "KumbhSans-SemiBold",
+      sans-serif);
+  font-size: var(--size-14-size-14-semibold-font-size, 14px);
+  font-weight: var(--size-14-size-14-semibold-font-weight, 600);
+  position: relative;
+}

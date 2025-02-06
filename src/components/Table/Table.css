@@ -1,0 +1,167 @@
+.order-table-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.order-table {
+  max-width: 800px;
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+}
+
+.order-table th,
+.order-table td {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 14px;
+  font-family: "Kumbh Sans", sans-serif;
+  font-weight: 500;
+  color: #1b212d;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.order-table th {
+  background: #f7f7f7;
+  font-weight: 600;
+}
+
+.order-table tr:last-child td {
+  border-bottom: none;
+}
+
+.order-table tbody tr:hover {
+  background: #f5f5f5;
+  transition: 0.3s;
+}
+
+.AddItemTotal {
+  display: flex;
+  max-width: 800px;
+  width: 100%;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-top: 2rem;
+
+}
+
+.add-itemButton {
+  color: #6a1b9a;
+  text-align: center;
+  font-family: var(--size-14-size-14-semibold-font-family,
+      "KumbhSans-SemiBold",
+      sans-serif);
+  font-size: var(--size-14-size-14-semibold-font-size, 14px);
+  font-weight: var(--size-14-size-14-semibold-font-weight, 600);
+  position: relative;
+}
+
+.subtotalDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.infoDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+
+
+.subTotalDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 250px;
+}
+
+.TextG {
+  color: var(--text-color-text-1, #1b212d);
+  text-align: left;
+  font-family: var(--size-14-size-14-medium-font-family,
+      "KumbhSans-Medium",
+      sans-serif);
+  font-size: var(--size-14-size-14-medium-font-size, 14px);
+  font-weight: var(--size-14-size-14-medium-font-weight, 500);
+}
+
+.priceText {
+  color: var(--text-color-text-1, #1b212d);
+  text-align: right;
+  font-family: var(--size-14-size-14-semibold-font-family,
+      "KumbhSans-SemiBold",
+      sans-serif);
+  font-size: var(--size-14-size-14-semibold-font-size, 14px);
+  font-weight: var(--size-14-size-14-semibold-font-weight, 600);
+
+}
+
+.addButton {
+  color: #6a1b9a;
+  text-align: right;
+  font-family: var(--size-14-size-14-semibold-font-family,
+      "KumbhSans-SemiBold",
+      sans-serif);
+  font-size: var(--size-14-size-14-semibold-font-size, 14px);
+  font-weight: var(--size-14-size-14-semibold-font-weight, 600);
+  position: relative;
+}
+
+.line-15 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: var(--gray-gray-3, #f5f5f5);
+  border-width: 1px 0 0 0;
+  flex-shrink: 0;
+  width: 274px;
+  height: 0px;
+  position: relative;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+
+.totalText {
+  color: var(--text-color-text-1, #1b212d);
+  text-align: left;
+  font-family: var(--size-14-size-14-semibold-font-family,
+      "KumbhSans-SemiBold",
+      sans-serif);
+  font-size: var(--size-14-size-14-semibold-font-size, 14px);
+  font-weight: var(--size-14-size-14-semibold-font-weight, 600);
+
+}
+
+.InputData {
+  width: 30%;
+  align-items: center;
+  padding: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+  border-radius: 10px;
+}
