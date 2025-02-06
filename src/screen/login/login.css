@@ -3,7 +3,8 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(to right, #f8f9fa, #e3f2fd); /* Light gradient */
+  background: linear-gradient(to right, #f8f9fa, #e3f2fd);
+  /* Light gradient */
   color: #333;
   user-select: none;
 }
@@ -13,6 +14,7 @@ body {
   padding: 0;
   color: #333;
 }
+
 .login-container {
   display: flex;
   justify-content: space-between;
@@ -67,10 +69,6 @@ button {
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
-}
-
-button:hover {
-  background-color: #9c27b0;
 }
 
 button:disabled {
