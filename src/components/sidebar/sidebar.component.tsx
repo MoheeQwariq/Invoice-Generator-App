@@ -1,17 +1,17 @@
 import { FC, useState } from "react";
+import { Link } from "react-router-dom";
 import "./sidebar.component.css";
-import { IoHomeOutline } from "react-icons/io5";
+import { IoHomeOutline, IoHelpCircleOutline, IoLogOutOutline } from "react-icons/io5";
 import { CiSettings } from "react-icons/ci";
-import { IoHelpCircleOutline, IoLogOutOutline } from "react-icons/io5"; // New icons
 
 const menuItems = [
-  { name: "Dashboard", icon: IoHomeOutline },
-  { name: "Invoices", icon: CiSettings },
+  { name: "Dashboard", icon: IoHomeOutline, path: "/CreateInvoice" },
+  { name: "Invoices", icon: CiSettings, path: "/AllInvoices" },
 ];
 
 const bottomItems = [
-  { name: "Help", icon: IoHelpCircleOutline },
-  { name: "Logout", icon: IoLogOutOutline },
+  { name: "Help", icon: IoHelpCircleOutline, path: "/Help" },
+  { name: "Logout", icon: IoLogOutOutline, path: "/Login" },
 ];
 
 const NavHeader = () => (
@@ -21,24 +21,25 @@ const NavHeader = () => (
 );
 
 type ButtonProps = {
-  onClick: (item: string) => void;
+  to: string;
   name: string;
   icon?: React.ElementType;
   isActive: boolean;
+  onClick: (item: string) => void;
 };
 
-const NavButton: FC<ButtonProps> = ({ onClick, name, icon: IconComponent, isActive }) => (
-  <button type="button" onClick={() => onClick(name)} className={`nav-button ${isActive ? "active" : ""}`}>
+const NavButton: FC<ButtonProps> = ({ to, name, icon: IconComponent, isActive, onClick }) => (
+  <Link to={to} className={`nav-button ${isActive ? "active" : ""}`} onClick={() => onClick(name)}>
     {IconComponent && <IconComponent className="icon" />}
     <span>{name}</span>
-  </button>
+  </Link>
 );
 
 export const Sidebar = () => {
   const [activeItem, setActiveItem] = useState<string>("");
 
   const handleClick = (item: string) => {
-    setActiveItem(item !== activeItem ? item : "");
+    setActiveItem(item);
   };
 
   return (
@@ -46,12 +47,26 @@ export const Sidebar = () => {
       <NavHeader />
       <nav className="sidebar-nav">
         {menuItems.map((item) => (
-          <NavButton key={item.name} onClick={handleClick} name={item.name} icon={item.icon} isActive={activeItem === item.name} />
+          <NavButton
+            key={item.name}
+            to={item.path}
+            name={item.name}
+            icon={item.icon}
+            isActive={activeItem === item.name}
+            onClick={handleClick}
+          />
         ))}
       </nav>
       <div className="sidebar-bottom">
         {bottomItems.map((item) => (
-          <NavButton key={item.name} onClick={handleClick} name={item.name} icon={item.icon} isActive={activeItem === item.name} />
+          <NavButton
+            key={item.name}
+            to={item.path}
+            name={item.name}
+            icon={item.icon}
+            isActive={activeItem === item.name}
+            onClick={handleClick}
+          />
         ))}
       </div>
     </aside>

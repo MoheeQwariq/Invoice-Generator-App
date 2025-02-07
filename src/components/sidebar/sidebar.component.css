@@ -45,6 +45,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 8px;
+
 }
 
 .sidebar-bottom {
@@ -68,6 +69,7 @@ button {
   color: #929eae;
   border-radius: 8px;
   transition: 0.3s, color 0.3s;
+  text-decoration: none;
 }
 
 .nav-button .icon {

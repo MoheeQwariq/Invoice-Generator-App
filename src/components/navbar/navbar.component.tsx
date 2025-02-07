@@ -1,6 +1,5 @@
 import React from "react";
 import "./navbar.component.css";
-import {UilSearch, UilBell } from "@iconscout/react-unicons";
 import user from "../../assets/user.png";
 
 const Navbar: React.FC = () => {
@@ -12,15 +11,6 @@ const Navbar: React.FC = () => {
       </div>
 
       <div className="navbar-right">
-        <div className="search-box">
-        <button className="icon-button">
-          <UilSearch />
-        </button>
-        <div className="notification">
-          <UilBell />
-          <span className="badge">1</span>
-        </div>
-        </div>
         <img className="avatar" src={user} alt="User Avatar" />
       </div>
     </nav>

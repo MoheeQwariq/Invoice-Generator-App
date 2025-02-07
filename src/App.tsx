@@ -1,15 +1,30 @@
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { useState } from "react";
+import SignUp from "./screen/signUp";
+import Login from "./screen/login";
 import Navbar from "./components/navbar/navbar.component";
-import { Sidebar } from "./components/sidebar/sidebar.component"
+import { Sidebar } from "./components/sidebar/sidebar.component";
+import CreateInvoice from "./screen/create-invoice/create-invoice";
 
-import CreateInvoice from "./Pages/create-invoice/create-invoice";
+const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-function App() {
-  return <div className="App">
- <Sidebar/>
-    <Navbar/>
-    <CreateInvoice/>
-  </div>;
-}
+  return (
+    <Router>
+      {isAuthenticated && (
+        <>
+          <Sidebar />
+          <Navbar />
+        </>
+      )}
+      <Routes>
+        <Route path="/" element={<Navigate to="/Login" />} />
+        <Route path="/Login" element={<Login onLogin={() => setIsAuthenticated(true)} />} />
+        <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/CreateInvoice" element={isAuthenticated ? <CreateInvoice /> : <Navigate to="/Login" />} />
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;

@@ -62,11 +62,11 @@ const MainPart2: React.FC = () => {
           <div className="InvoiceButtons">
               <button className="SendInvoice">Send Invoice</button>
             <div className="OtherButton">
-              <button className="previewDiv">
+              <button className="previewDivButton">
                 <img className="eyeImage" src={preview} alt="preview" />
                 <div className="previewText">Preview</div>
               </button>
-              <button className="previewDiv">
+              <button className="previewDivButton">
                 <img className="downloadImage" src={download} alt="download" />
                 <div className="downloadText">Download</div>
               </button>
