@@ -46,7 +46,7 @@ const SignUp = () => {
             localStorage.setItem("users", JSON.stringify(users));
 
             console.log("User registered successfully.");
-            navigate("/welcome", { state: { user: formData } });
+            navigate("/CreateInvoice", { state: { user: formData } });
         } else {
             console.log("Form contains errors.");
         }
@@ -111,7 +111,7 @@ const SignUp = () => {
                         error={errors.address}
                         icon={faMapMarkerAlt}
                     />
-                    <button type="submit">Sign Up</button>
+                    <button type="submit" className="ButtonSignup">Sign Up</button>
                 </form>
 
                 <p className="signup-text">

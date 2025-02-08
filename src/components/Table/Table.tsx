@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import "./Table.css";
-
-interface TableRow {
-  name: string;
-  price: number;
-  quantity: number;
-}
+import { TableRow } from "../../types";
 
 export const OrderTable: React.FC = () => {
   const [data, setData] = useState<TableRow[]>([
@@ -17,14 +12,26 @@ export const OrderTable: React.FC = () => {
   const [isTaxInputVisible, setIsTaxInputVisible] = useState(false);
   const [isDiscountInputVisible, setIsDiscountInputVisible] = useState(false);
 
-  const handleChange = (index: number, field: keyof TableRow, value: string) => {
+  const handleChange = (
+    index: number,
+    field: keyof TableRow,
+    value: string
+  ) => {
     const newData = [...data];
-    newData[index] = { ...newData[index], [field]: field === "name" ? value : Number(value) };
+    newData[index] = {
+      ...newData[index],
+      [field]: field === "name" ? value : Number(value),
+    };
     setData(newData);
   };
 
   const addRow = () => {
     setData([...data, { name: "", price: 0, quantity: 1 }]);
+  };
+
+  const removeRow = (index: number) => {
+    const newData = data.filter((_, i) => i !== index);
+    setData(newData);
   };
 
   const calculateSubTotal = () => {
@@ -33,18 +40,18 @@ export const OrderTable: React.FC = () => {
 
   const calculateTotal = () => {
     let total = calculateSubTotal();
-    
+
     if (tax) {
-      if (tax.includes('%')) {
-        total += (total * parseFloat(tax.replace('%', ''))) / 100;
+      if (tax.includes("%")) {
+        total += (total * parseFloat(tax.replace("%", ""))) / 100;
       } else {
         total += parseFloat(tax);
       }
     }
 
     if (discount) {
-      if (discount.includes('%')) {
-        total -= (total * parseFloat(discount.replace('%', ''))) / 100;
+      if (discount.includes("%")) {
+        total -= (total * parseFloat(discount.replace("%", ""))) / 100;
       } else {
         total -= parseFloat(discount);
       }
@@ -62,6 +69,7 @@ export const OrderTable: React.FC = () => {
             <th>Quantity</th>
             <th>Price</th>
             <th>Amount</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -80,7 +88,9 @@ export const OrderTable: React.FC = () => {
                   type="number"
                   className="InputData"
                   value={row.quantity}
-                  onChange={(e) => handleChange(index, "quantity", e.target.value)}
+                  onChange={(e) =>
+                    handleChange(index, "quantity", e.target.value)
+                  }
                 />
               </td>
               <td>
@@ -92,19 +102,29 @@ export const OrderTable: React.FC = () => {
                 />
               </td>
               <td>${(row.price * row.quantity).toFixed(2)}</td>
+              <td>
+                <button
+                  className="deleteButton"
+                  onClick={() => removeRow(index)}
+                >
+                  ❌
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div className="AddItemTotal">
-        <button className="add-itemButton" onClick={addRow}>Add Item</button>
+      <div className="TableAction">
+        <button className="AddItemButton" onClick={addRow}>
+          Add Item
+        </button>
         <div className="subtotalDiv">
           <div className="infoDiv">
             <div className="subTotalDiv">
               <div className="TextG">Subtotal </div>
               <div className="priceText">${calculateSubTotal().toFixed(2)}</div>
             </div>
-            
+
             <div className="subTotalDiv">
               <div className="TextG">Discount </div>
               {isDiscountInputVisible ? (
@@ -118,7 +138,12 @@ export const OrderTable: React.FC = () => {
                   placeholder="Enter discount (e.g., 10% or 5)"
                 />
               ) : (
-                <div className="addButton" onClick={() => setIsDiscountInputVisible(true)}>Add</div>
+                <div
+                  className="addButton"
+                  onClick={() => setIsDiscountInputVisible(true)}
+                >
+                  Add
+                </div>
               )}
             </div>
 
@@ -135,11 +160,14 @@ export const OrderTable: React.FC = () => {
                   placeholder="Enter tax (e.g., 10% or 5)"
                 />
               ) : (
-                <div className="addButton" onClick={() => setIsTaxInputVisible(true)}>Add</div>
+                <div
+                  className="addButton"
+                  onClick={() => setIsTaxInputVisible(true)}
+                >
+                  Add
+                </div>
               )}
             </div>
-
-            <div className="line-15"></div>
           </div>
           <div className="subTotalDiv">
             <div className="totalText">Total </div>

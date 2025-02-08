@@ -1,6 +1,5 @@
 import React from "react";
 import "./navbar.component.css";
-import user from "../../assets/user.png";
 
 const Navbar: React.FC = () => {
   return (
@@ -11,7 +10,7 @@ const Navbar: React.FC = () => {
       </div>
 
       <div className="navbar-right">
-        <img className="avatar" src={user} alt="User Avatar" />
+      <h3 className="TextStyle">PayInvo</h3>
       </div>
     </nav>
   );

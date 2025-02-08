@@ -1,6 +1,8 @@
 .main {
-  margin-left: 260px;
+  margin-left: 250px;
   display: flex;
+  max-width: 900px;
+  width: 100%;
   flex-direction: row;
   padding-left: 5rem;
   padding-right: 5rem;
@@ -15,6 +17,17 @@
   gap: 20px;
   width: 100%;
 }
+.LargeInvoiceNumber {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  background-color: #f7f7f7;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 5px;
+}
+
 
 .General-Info {
   background: #6A1B9A;
@@ -55,11 +68,6 @@
   }
 }
 
-.TableDetails {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
 
 .textG2 {
   color: var(--text-color-pure-white, #ffffff);
@@ -108,6 +116,7 @@
   flex-direction: column;
   padding-top: 1rem;
   gap: 10px;
+  height: 100%;
   align-items: flex-start;
   justify-content: flex-start;
   flex-shrink: 0;
@@ -172,50 +181,32 @@
 }
 
 .TextDetails {
+  padding-top: 5px;
   color: var(--text-color-text-1, #aaabad);
   text-align: left;
   font-family: var(--size-16-size-16-semibold-font-family,
       "KumbhSans-SemiBold",
       sans-serif);
-  font-size: var(--size-14-size-14-semibold-font-size, 14px);
+  font-size: var(--size-14-size-14-semibold-font-size, 12px);
   font-weight: var(--size-16-size-16-semibold-font-weight, 600);
   position: relative;
 }
-.InvoiceDate {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
-}
-
-.InvoiceDateText {
-  color: var(--text-color-text-1, #1b212d);
-  text-align: left;
-  font-family: var(--size-14-size-14-regular-font-family,
-      "KumbhSans-Regular",
-      sans-serif);
-  font-size: var(--size-14-size-14-regular-font-size, 14px);
-  font-weight: var(--size-14-size-14-regular-font-weight, 400);
-  position: relative;
-}
-
-.InputDate {
+.input-container {
+  padding-top: 5px;
   flex-shrink: 0;
   width: 100%;
   display: flex;
 }
 
-.inputText {
-  color: var(--text-color-text-1, #1b212d);
-  text-align: left;
-  font-family: var(--size-14-size-14-medium-font-family,
-      "KumbhSans-Medium",
-      sans-serif);
-  font-size: var(--size-14-size-14-medium-font-size, 14px);
-  font-weight: var(--size-14-size-14-medium-font-weight, 500);
+.input-field {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  color: #1b212d;
+  background-color: #fff;
+  font-family: "KumbhSans-Medium", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
   width: 100%;
+  transition: all 0.3s ease-in-out;
 }

@@ -9,10 +9,16 @@ const CreateInvoice = () => {
       ? users[0]
       : { name: "", email: "", phone: "", address: "" };
 
+  const generateInvoiceNumber = () => {
+    return `INV-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+  };
+
   const [invoiceDetails, setInvoiceDetails] = useState({
-    invoiceNumber: "",
+    invoiceNumber: generateInvoiceNumber(),
     issuedDate: "",
     dueDate: "",
+    status: "Unpaid",
+    paymentMethod: "",
   });
 
   const [clientDetails, setClientDetails] = useState({
@@ -21,11 +27,11 @@ const CreateInvoice = () => {
     address: "",
   });
 
-  const handleInvoiceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInvoiceChange = (e) => {
     setInvoiceDetails({ ...invoiceDetails, [e.target.name]: e.target.value });
   };
 
-  const handleClientChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+  const handleClientChange = (e) => {
     setClientDetails({ ...clientDetails, [e.target.name]: e.target.value });
   };
 
@@ -46,84 +52,112 @@ const CreateInvoice = () => {
           <div className="invoice-number">
             <div className="invoice-number2">Invoice Details</div>
             <div className="info">
-              <div className="InvoiceDate">
-                <div className="InvoiceDateText">Invoice Number</div>
-                <div className="InputDate">
-                  <input
-                    type="text"
-                    name="invoiceNumber"
-                    value={invoiceDetails.invoiceNumber}
-                    onChange={handleInvoiceChange}
-                    className="inputText"
-                    placeholder="Invoice Number"
-                  />
+              <div className="InvoiceDetails">
+                <div className="InvoiceDetailsText">Invoice Number</div>
+                <div className="LargeInvoiceNumber">
+                  {invoiceDetails.invoiceNumber}
                 </div>
               </div>
-              <div className="InvoiceDate">
-                <div className="InvoiceDateText">Due Date</div>
-                <div className="InputDate">
+              <div className="InvoiceDetails">
+                <div className="InvoiceDetailsText">Due Date</div>
+                <div className="input-container">
                   <input
                     type="date"
                     name="dueDate"
                     value={invoiceDetails.dueDate}
                     onChange={handleInvoiceChange}
-                    className="inputText"
+                    className="input-field"
                     placeholder="Due Date"
                   />
                 </div>
               </div>
-              <div className="InvoiceDate">
-                <div className="InvoiceDateText">Issued Date</div>
-                <div className="InputDate">
+              <div className="InvoiceDetails">
+                <div className="InvoiceDetailsText">Issued Date</div>
+                <div className="input-container">
                   <input
                     type="date"
                     name="issuedDate"
-                    className="inputText"
+                    className="input-field"
                     value={invoiceDetails.issuedDate}
                     onChange={handleInvoiceChange}
                     placeholder="Issued Date"
                   />
                 </div>
               </div>
+              <div className="InvoiceDetails">
+                <div className="InvoiceDetailsText">Invoice Status</div>
+                <div className="input-container">
+                  <select
+                    id="status"
+                    name="status"
+                    className="input-field"
+                    value={invoiceDetails.status}
+                    onChange={handleInvoiceChange}
+                  >
+                    <option value="Unpaid">Unpaid</option>
+                    <option value="Paid">Paid</option>
+                  </select>
+                </div>
+              </div>
+              {invoiceDetails.status === "Paid" && (
+                <div className="InvoiceDetails">
+                  <div className="InvoiceDetailsText">Payment Method</div>
+                  <div className="input-container">
+                    <label htmlFor="paymentMethod">Payment Method</label>
+                    <select
+                      id="paymentMethod"
+                      name="paymentMethod"
+                      className="input-field"
+                      value={invoiceDetails.paymentMethod}
+                      onChange={handleInvoiceChange}
+                    >
+                      <option value="">Select Payment Method</option>
+                      <option value="Cash">Cash</option>
+                      <option value="Credit Card">Credit Card</option>
+                      <option value="Bank Transfer">Bank Transfer</option>
+                    </select>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
           <div className="billed-to">
             <div className="billed-to2">Billed to</div>
             <div className="info2">
-              <div className="InvoiceDate">
-                <div className="InvoiceDateText">Client Name</div>
-                <div className="InputDate">
+              <div className="InvoiceDetails">
+                <div className="InvoiceDetailsText">Client Name</div>
+                <div className="input-container">
                   <input
                     type="text"
                     name="clientName"
-                    className="inputText"
+                    className="input-field"
                     value={clientDetails.clientName}
                     onChange={handleClientChange}
                     placeholder="Client Name"
                   />
                 </div>
               </div>
-              <div className="InvoiceDate">
-                <div className="InvoiceDateText">Client Email</div>
-                <div className="InputDate">
+              <div className="InvoiceDetails">
+                <div className="InvoiceDetailsText">Client Email</div>
+                <div className="input-container">
                   <input
                     type="email"
                     name="email"
                     value={clientDetails.email}
-                    className="inputText"
+                    className="input-field"
                     onChange={handleClientChange}
                     placeholder="Client Email"
                   />
                 </div>
               </div>
-              <div className="InvoiceDate">
-                <div className="InvoiceDateText">Client Address</div>
-                <div className="InputDate">
+              <div className="InvoiceDetails">
+                <div className="InvoiceDetailsText">Client Address</div>
+                <div className="input-container">
                   <input
                     type="text"
                     name="address"
                     value={clientDetails.address}
-                    className="inputText"
+                    className="input-field"
                     onChange={handleClientChange}
                     placeholder="Client Address"
                   />
