@@ -1,17 +1,13 @@
 import "./login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Image from "../../assets/invoice.jpg";
+import Image from "../../assets/logIn.svg";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import InputField from "../../components/input";
 import { validateUser } from "../../utils/validation";
 import { IUser } from "../../types";
 
-interface LoginProps {
-  onLogin: () => void;
-}
-
-const Login: React.FC<LoginProps> = ({ onLogin }) => {
+const Login = () => {
   const navigate = useNavigate();
   const initialUser: IUser = { email: "", password: "" };
   const initialError = { emailError: "", passwordError: "" };
@@ -29,22 +25,17 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     setErrors(validationErrors);
 
     if (!validationErrors.emailError && !validationErrors.passwordError) {
-      if (checkUserInLocalStorage(user)) {
-        onLogin(); // <-- Updates authentication state
-        navigate("/CreateInvoice");
-      } else {
+      if (checkUserInLocalStorage(user)) navigate("/welcome");
+      else {
         setErrors({
           emailError: "Invalid email",
           passwordError: "Invalid password",
         });
-        handleClear();
+   
       }
     }
   };
 
-  const handleClear = () => {
-    setUser(initialUser);
-  };
 
   const checkUserInLocalStorage = (user: IUser) => {
     const storedUsers = localStorage.getItem("users");
@@ -55,7 +46,8 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     const existingUser = usersArray.find(
       (u: IUser) => u.email === user.email && u.password === user.password
     );
-    return !!existingUser;
+    if (existingUser) return true;
+    return false;
   };
 
   return (
@@ -88,7 +80,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                 icon={faLock}
               />
 
-              <button type="submit" className="ButtonLogIn">Login</button>
+              <button type="submit">Login</button>
             </form>
 
             <p className="signup-text">
@@ -106,5 +98,4 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     </div>
   );
 };
-
 export default Login;
