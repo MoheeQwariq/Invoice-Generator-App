@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./part2.component.css";
+import "./part2.css";
 import user from "../../assets/user.png";
 import verify from "../../assets/verify.png";
 import preview from "../../assets/Eye.png";

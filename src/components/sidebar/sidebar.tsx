@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { Link } from "react-router-dom";
-import "./sidebar.component.css";
+import "./sidebar.css";
 import { IoHomeOutline, IoHelpCircleOutline, IoLogOutOutline } from "react-icons/io5";
 import { CiSettings } from "react-icons/ci";
 
@@ -35,7 +35,7 @@ const NavButton: FC<ButtonProps> = ({ to, name, icon: IconComponent, isActive, o
   </Link>
 );
 
-export const Sidebar = () => {
+ const Sidebar = () => {
   const [activeItem, setActiveItem] = useState<string>("");
 
   const handleClick = (item: string) => {
@@ -72,3 +72,4 @@ export const Sidebar = () => {
     </aside>
   );
 };
+export default Sidebar;

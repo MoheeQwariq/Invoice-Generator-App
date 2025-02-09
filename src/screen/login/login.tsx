@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Image from "../../assets/logIn.svg";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
-import InputField from "../../components/input";
+import InputField from "../../components/inputField";
 import { validateUser } from "../../utils/validation";
 import { IUser } from "../../types";
 

@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import { useState } from "react";
 import SignUp from "./screen/signUp";
 import Login from "./screen/login";
-import Navbar from "./components/navbar/navbar.component";
-import { Sidebar } from "./components/sidebar/sidebar.component";
+import Navbar from "./components/navbar/navbar";
+import { Sidebar } from "./components/sidebar/sidebar";
 import CreateInvoice from "./screen/create-invoice/create-invoice";
 
 const App = () => {

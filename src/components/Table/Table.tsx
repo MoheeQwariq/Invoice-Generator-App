@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./Table.css";
+import "./table.css";
 import { TableRow } from "../../types";
 
-export const OrderTable: React.FC = () => {
+const OrderTable: React.FC = () => {
   const [data, setData] = useState<TableRow[]>([
     { name: "Iphone 13 Pro Max", price: 244, quantity: 1 },
     { name: "Netflix Subscription", price: 420, quantity: 1 },
@@ -178,3 +178,4 @@ export const OrderTable: React.FC = () => {
     </div>
   );
 };
+export default OrderTable;
