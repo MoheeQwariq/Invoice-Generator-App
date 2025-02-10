@@ -1,0 +1,9 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    background: #dedee3;
+    font-family: "Euclid Circular A";
+  }

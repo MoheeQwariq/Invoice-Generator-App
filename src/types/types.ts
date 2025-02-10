@@ -32,3 +32,9 @@ export interface IUser{
     email: string;
     password: string;  
 } 
+
+export interface TableRow {
+    name: string;
+    price: number;
+    quantity: number;
+  }
