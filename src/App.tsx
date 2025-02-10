@@ -3,8 +3,8 @@ import { useState } from "react";
 import SignUp from "./screen/signUp";
 import Login from "./screen/login";
 import Navbar from "./components/navbar/navbar";
-import { Sidebar } from "./components/sidebar/sidebar";
 import CreateInvoice from "./screen/create-invoice/create-invoice";
+import Sidebar from "./components/sidebar";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

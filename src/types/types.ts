@@ -38,3 +38,7 @@ export interface TableRow {
     price: number;
     quantity: number;
   }
+
+export interface ILogin{
+    onLogin:()=>void
+}

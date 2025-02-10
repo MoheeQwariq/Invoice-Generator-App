@@ -5,9 +5,9 @@ import Image from "../../assets/logIn.svg";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import InputField from "../../components/inputField";
 import { validateUser } from "../../utils/validation";
-import { IUser } from "../../types";
+import { ILogin, IUser } from "../../types";
 
-const Login = () => {
+const Login = (props:ILogin) => {
   const navigate = useNavigate();
   const initialUser: IUser = { email: "", password: "" };
   const initialError = { emailError: "", passwordError: "" };
@@ -25,7 +25,9 @@ const Login = () => {
     setErrors(validationErrors);
 
     if (!validationErrors.emailError && !validationErrors.passwordError) {
-      if (checkUserInLocalStorage(user)) navigate("/welcome");
+      if (checkUserInLocalStorage(user)) {
+        props.onLogin();
+        navigate("/CreateInvoice");}
       else {
         setErrors({
           emailError: "Invalid email",
@@ -80,7 +82,7 @@ const Login = () => {
                 icon={faLock}
               />
 
-              <button type="submit">Login</button>
+              <button className='ButtonLogIn' type="submit">Login</button>
             </form>
 
             <p className="signup-text">
