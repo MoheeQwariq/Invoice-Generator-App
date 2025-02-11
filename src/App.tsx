@@ -11,6 +11,7 @@ import Navbar from "./components/navbar/navbar";
 import Sidebar from "./components/sidebar/sidebar";
 import CreateInvoice from "./screen/create-invoice/create-invoice";
 
+
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 

@@ -1,4 +1,4 @@
-import OrderTable from "../../components/table/table";
+import OrderTable from "../../components/table";
 import "./create-invoice.css";
 import { useState } from "react";
 
@@ -27,11 +27,11 @@ const CreateInvoice = () => {
     address: "",
   });
 
-  const handleInvoiceChange = (e) => {
+  const handleInvoiceChange = (e:React.ChangeEvent<HTMLInputElement>| React.ChangeEvent<HTMLSelectElement>) => {
     setInvoiceDetails({ ...invoiceDetails, [e.target.name]: e.target.value });
   };
 
-  const handleClientChange = (e) => {
+  const handleClientChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setClientDetails({ ...clientDetails, [e.target.name]: e.target.value });
   };
 
