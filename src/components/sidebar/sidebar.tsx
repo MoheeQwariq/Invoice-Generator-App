@@ -1,8 +1,14 @@
 import { FC, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./sidebar.css";
-import { IoHomeOutline, IoHelpCircleOutline, IoLogOutOutline } from "react-icons/io5";
+import {
+  IoHomeOutline,
+  IoHelpCircleOutline,
+  IoLogOutOutline,
+} from "react-icons/io5";
 import { CiSettings } from "react-icons/ci";
+import { ButtonProps } from "../../types";
+import AppIcon from "../../assets/PayInvo.png";
 
 const menuItems = [
   { name: "Dashboard", icon: IoHomeOutline, path: "/CreateInvoice" },
@@ -11,35 +17,42 @@ const menuItems = [
 
 const bottomItems = [
   { name: "Help", icon: IoHelpCircleOutline, path: "/Help" },
-  { name: "Logout", icon: IoLogOutOutline, path: "/Login" },
 ];
 
 const NavHeader = () => (
   <header className="sidebar-header">
-    <span>PayInvo</span>
+    <img src={AppIcon} alt="App Icon" className="app-icon" />
+    <span className="app-name">PayInvo</span>
   </header>
 );
-
-type ButtonProps = {
-  to: string;
-  name: string;
-  icon?: React.ElementType;
-  isActive: boolean;
-  onClick: (item: string) => void;
-};
-
-const NavButton: FC<ButtonProps> = ({ to, name, icon: IconComponent, isActive, onClick }) => (
-  <Link to={to} className={`nav-button ${isActive ? "active" : ""}`} onClick={() => onClick(name)}>
+const NavButton: FC<ButtonProps> = ({
+  to,
+  name,
+  icon: IconComponent,
+  isActive,
+  onClick,
+}) => (
+  <Link
+    to={to}
+    className={`nav-button ${isActive ? "active" : ""}`}
+    onClick={() => onClick(name)}
+  >
     {IconComponent && <IconComponent className="icon" />}
     <span>{name}</span>
   </Link>
 );
 
- const Sidebar = () => {
+const Sidebar = ({ onLogout }: { onLogout: () => void }) => {
   const [activeItem, setActiveItem] = useState<string>("");
+  const navigate = useNavigate();
 
   const handleClick = (item: string) => {
     setActiveItem(item);
+  };
+
+  const handleLogout = () => {
+    onLogout();
+    navigate("/Login");
   };
 
   return (
@@ -68,8 +81,13 @@ const NavButton: FC<ButtonProps> = ({ to, name, icon: IconComponent, isActive, o
             onClick={handleClick}
           />
         ))}
+        <button className="nav-button logout-button" onClick={handleLogout}>
+          <IoLogOutOutline className="icon" />
+          <span>Logout</span>
+        </button>
       </div>
     </aside>
   );
 };
+
 export default Sidebar;

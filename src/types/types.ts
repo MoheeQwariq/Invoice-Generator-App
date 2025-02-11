@@ -38,3 +38,14 @@ export interface TableRow {
     price: number;
     quantity: number;
   }
+
+  export interface IlogIn {
+    onLogin: () => void;
+}
+export type ButtonProps = {
+    to: string;
+    name: string;
+    icon?: React.ElementType;
+    isActive: boolean;
+    onClick: (item: string) => void;
+  };

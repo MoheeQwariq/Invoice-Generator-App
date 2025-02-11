@@ -1,4 +1,4 @@
-import { OrderTable } from "../../components/table/table";
+import OrderTable from "../../components/table/table";
 import "./create-invoice.css";
 import { useState } from "react";
 
@@ -103,7 +103,6 @@ const CreateInvoice = () => {
                 <div className="InvoiceDetails">
                   <div className="InvoiceDetailsText">Payment Method</div>
                   <div className="input-container">
-                    <label htmlFor="paymentMethod">Payment Method</label>
                     <select
                       id="paymentMethod"
                       name="paymentMethod"

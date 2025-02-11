@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./table.css";
 import { TableRow } from "../../types";
+import { MdDelete } from "react-icons/md";
 
 const OrderTable: React.FC = () => {
   const [data, setData] = useState<TableRow[]>([
@@ -107,7 +108,7 @@ const OrderTable: React.FC = () => {
                   className="deleteButton"
                   onClick={() => removeRow(index)}
                 >
-                  ❌
+                  <MdDelete className="iconDelete" />
                 </button>
               </td>
             </tr>
