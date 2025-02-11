@@ -1,4 +1,6 @@
-import OrderTable from "../../components/table";
+import PreviewInvoice from "../../components/previewInvoice";
+import OrderTable from "../../components/Table";
+import { IBusinessMan, IClient, IInvoice } from "../../types";
 import "./create-invoice.css";
 import { useState } from "react";
 
@@ -26,6 +28,26 @@ const CreateInvoice = () => {
     email: "",
     address: "",
   });
+  const use :IBusinessMan  =  {
+    name:'Mohee Qwariq',
+    email: 'moheedeab16@gmail.com',
+    phone: '0599123123',
+    address: 'Nablus'
+  };
+  const client:IClient = {
+    name:'Osama Ghneem',
+    email: 'Osama_Ghneem@gmail.com',
+    phone:'059959595',
+    address: 'Bethlehem'
+  }
+
+  const invoice:IInvoice = {
+    InvoiceId :'438553059039', 
+    dueDate : '10/9/2024',
+    issueDate:'12/2/2025',
+    status:true,
+    paymentMethod:'Cash'
+  }
 
   const handleInvoiceChange = (e:React.ChangeEvent<HTMLInputElement>| React.ChangeEvent<HTMLSelectElement>) => {
     setInvoiceDetails({ ...invoiceDetails, [e.target.name]: e.target.value });
@@ -36,6 +58,7 @@ const CreateInvoice = () => {
   };
 
   return (
+    <div className="wrapper">
     <div className="main">
       <div className="MainPart1">
         <div className="General-Info">
@@ -171,6 +194,8 @@ const CreateInvoice = () => {
         </div>
         <OrderTable />
       </div>
+      </div>
+      <PreviewInvoice user={use} client={client} invoice={invoice}/>
     </div>
   );
 };

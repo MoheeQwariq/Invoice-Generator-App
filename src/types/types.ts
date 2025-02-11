@@ -49,3 +49,33 @@ export type ButtonProps = {
     isActive: boolean;
     onClick: (item: string) => void;
   };
+
+  export interface IBusinessMan  {
+    name: string;
+    email: string;
+    phone: string;
+    address: string;
+  }
+  
+  export interface IClient{
+    name: string;
+    email: string;
+    phone: string;
+    address: string;
+  }
+  
+  export interface IInvoice{
+    InvoiceId:string;
+    issueDate:string;
+    dueDate:string;
+    status:boolean;
+    paymentMethod:string;
+  }
+  
+  export interface IPreview {
+   user:IBusinessMan;
+   client:IClient;
+   invoice:IInvoice;
+  }
+  
+  
