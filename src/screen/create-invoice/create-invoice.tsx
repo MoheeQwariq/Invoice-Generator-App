@@ -1,8 +1,11 @@
+import CustomButton from "../../components/customButton";
 import PreviewInvoice from "../../components/previewInvoice";
 import OrderTable from "../../components/Table";
 import { IBusinessMan, IClient, IInvoice } from "../../types";
 import "./create-invoice.css";
 import { useState } from "react";
+import preview from "../../assets/Eye.png";
+import download from "../../assets/Download.png";
 
 const CreateInvoice = () => {
   const users = JSON.parse(localStorage.getItem("users") || "[]") || [];
@@ -39,10 +42,10 @@ const CreateInvoice = () => {
     email: 'Osama_Ghneem@gmail.com',
     phone:'059959595',
     address: 'Bethlehem'
-  }
+  };
 
   const invoice:IInvoice = {
-    InvoiceId :'438553059039', 
+    InvoiceId :'INV-1739317809044-108', 
     dueDate : '10/9/2024',
     issueDate:'12/2/2025',
     status:true,
@@ -56,6 +59,14 @@ const CreateInvoice = () => {
   const handleClientChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setClientDetails({ ...clientDetails, [e.target.name]: e.target.value });
   };
+
+  const handelPreview = () => {
+    
+  }
+
+ const handelDownload = () => {
+
+ }
 
   return (
     <div className="wrapper">
@@ -195,7 +206,13 @@ const CreateInvoice = () => {
         <OrderTable />
       </div>
       </div>
-      <PreviewInvoice user={use} client={client} invoice={invoice}/>
+      <div>
+      <PreviewInvoice user={use} client={client} invoice={invoice} pageType={"A6"}/>
+      <div className="setting">
+      <CustomButton icon={preview} text="Preview" onClick={handelPreview} />
+      <CustomButton icon={download} text="Download" onClick={handelDownload} />
+      </div>
+      </div>
     </div>
   );
 };

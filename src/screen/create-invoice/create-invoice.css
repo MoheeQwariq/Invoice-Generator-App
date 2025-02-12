@@ -1,6 +1,7 @@
 .wrapper{
   display: flex;
   flex-direction: row;
+  gap: 10px;
 }
 .main {
   margin-left: 250px;
@@ -9,6 +10,7 @@
   width: 100%;
   flex-direction: row;
   padding-left: 5rem;
+  padding-right:5rem;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
@@ -212,6 +214,16 @@ select.input-field {
 
 .card-theme-off>button:hover {
   background-color: #4a1176;
+}
+
+.setting{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  height: 40px;
 }
 
 @media (max-width: 768px) {

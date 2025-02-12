@@ -2,9 +2,13 @@ import { IPreview } from "../../types";
 import "./previewInvoice.css";
 
 const PreviewInvoice = (props: IPreview) => {
-  const { user, client,invoice} = props;
+  const { user, client,invoice,pageType} = props;
+  const style = {
+    width: pageType === "A4" ? "210mm" : "105mm",
+    height: pageType === "A4" ? "297mm" : "148.5mm",}
+
   return (
-    <div className="A4">
+    <div className="paper" style={style}>
       <div className="title">INVOICE</div>
       <div className="user">
         {user.name} | {user.address} | {user.email} | {user.phone}

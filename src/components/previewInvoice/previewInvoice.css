@@ -1,9 +1,5 @@
-.A4 {
-  margin: 100px;
+.paper {
   border: 1px solid black;
-  width: 147mm;
-  height: 208mm;
-  margin: 100px;
 }
 
 .title {
@@ -14,7 +10,7 @@
   text-align: center;
   align-content: center;
   font-weight: bold;
-  font-size: 40px;
+  font-size:xx-large
 }
 
 .user {
@@ -24,7 +20,7 @@
   color: white;
   text-align: center;
   align-content: center;
-  font-size: 14px;
+  font-size:x-small;
 }
 ._container {
   display: flex;
@@ -42,27 +38,29 @@
   height: 50%;
 }
 .status {
-  margin-top: 2%;
-  height: 30%;
-  text-align: center;
+  margin-top: 10% ;
+  height: 20%;
   color: white;
   background-color: #6a1b9a;
+  font-size: small;
   font-weight: bold;
-  font-size: 16px;
+  text-align: center;
+  align-content: center;
+  margin-bottom: 5%;
 }
 
 .client {
   height: 12%;
   width: 30%;
   color: #6a1b9a;
-  font-size: 16px;
   font-weight: bold;
   margin-left: 3%;
+  font-size: small;
 }
 .client .label {
   color: black;
   font-weight: normal;
-  font-size: 12px;
+  font-size: x-small;
 }
 .invoice {
   width: 33%;
@@ -73,22 +71,23 @@
   background-color: #6a1b9a;
   color: white;
   font-weight: bold;
-  font-size: 16px;
   text-align: center;
   margin-bottom: 2%;
+  font-size: small;
+
 }
 
 .invoiceCard {
   background-color: white;
   color: black;
-  font-size: 14px;
   font-weight: normal;
   text-align: center;
   align-items: center;
+  font-size: x-small;
 }
 
 .break {
   height: 2%;
   background-color: #6a1b9a;
-  margin: 3% 5% 1% 5%;
+  margin: 1% 5% 1% 5%;
 }
