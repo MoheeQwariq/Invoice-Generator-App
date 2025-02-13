@@ -28,18 +28,18 @@ export type Errors = {
     address: string;
 };
 
-export interface IUser{
+export interface IUser {
     email: string;
-    password: string;  
-} 
+    password: string;
+}
 
 export interface TableRow {
     name: string;
     price: number;
     quantity: number;
-  }
+}
 
-  export interface IlogIn {
+export interface IlogIn {
     onLogin: () => void;
 }
 export type ButtonProps = {
@@ -48,4 +48,16 @@ export type ButtonProps = {
     icon?: React.ElementType;
     isActive: boolean;
     onClick: (item: string) => void;
-  };
+};
+
+export interface InvoiceCardProps {
+    clientName: string;
+    clientEmail: string;
+    invoiceNumber: string;
+    date: string;
+    totalAmount: number;
+    status: string;
+    profileImage?: string;
+    onDelete: () => void;
+    onEdit: () => void;
+}

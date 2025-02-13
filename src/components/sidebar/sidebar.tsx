@@ -12,7 +12,7 @@ import AppIcon from "../../assets/PayInvo.png";
 
 const menuItems = [
   { name: "Dashboard", icon: IoHomeOutline, path: "/CreateInvoice" },
-  { name: "Invoices", icon: CiSettings, path: "/AllInvoices" },
+  { name: "Invoices", icon: CiSettings, path: "/CardList" },
 ];
 
 const bottomItems = [

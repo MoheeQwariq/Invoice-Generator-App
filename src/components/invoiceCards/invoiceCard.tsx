@@ -1,28 +1,14 @@
-import React from 'react';
+
 import './invoiceCard.css';
 import { InvoiceCardProps } from '../../types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
-import profile1 from '../../assets/profileImages/profile (1).png';
-import profile2 from '../../assets/profileImages/profile (2).png';
-import profile3 from '../../assets/profileImages/profile (3).png';
-import profile4 from '../../assets/profileImages/profile (4).png';
-import profile5 from '../../assets/profileImages/profile (5).png';
+import useRandomImage from '../../hook/useRandomImage';
 
-const profileImages = [
-    profile1,
-    profile2,
-    profile3,
-    profile4,
-    profile5,
-];
-const getRandomImage = () => {
-    const randomIndex = Math.floor(Math.random() * profileImages.length);
-    return profileImages[randomIndex];
-};
 
 const InvoiceCard: React.FC<InvoiceCardProps> = ({ clientName, clientEmail, invoiceNumber, date, totalAmount, status, onDelete, onEdit }) => {
-    const profileImage = getRandomImage();
+    const profileImage = useRandomImage(invoiceNumber);
+
     return (
         <div className="invoice-card">
             <div className="invoice-item client-info">
