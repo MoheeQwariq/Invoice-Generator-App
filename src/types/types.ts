@@ -39,6 +39,13 @@ export interface TableRow {
     quantity: number;
   }
 
-export interface ILogin{
-    onLogin:()=>void
+  export interface IlogIn {
+    onLogin: () => void;
 }
+export type ButtonProps = {
+    to: string;
+    name: string;
+    icon?: React.ElementType;
+    isActive: boolean;
+    onClick: (item: string) => void;
+  };

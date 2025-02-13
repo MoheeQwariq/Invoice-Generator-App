@@ -5,8 +5,8 @@ import "./signUp.css"
 import { validateForm } from "../../utils/validation";
 import AccountImage from '../../assets/signup.svg';
 import InputField from "../../components/inputField/InputField";
-import { FormData } from "../../types";
-const SignUp = () => {
+import { FormData, IlogIn } from "../../types";
+const SignUp = (props:IlogIn) => {
     const [formData, setFormData] = useState<FormData>({
         name: '',
         email: '',
@@ -46,6 +46,7 @@ const SignUp = () => {
             localStorage.setItem("users", JSON.stringify(users));
 
             console.log("User registered successfully.");
+            props.onLogin();
             navigate("/CreateInvoice", { state: { user: formData } });
         } else {
             console.log("Form contains errors.");

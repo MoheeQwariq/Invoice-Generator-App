@@ -12,6 +12,19 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+.deleteButton {
+  color: #1b212d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconDelete {
+  color: #f80404;
+  width: 25px;
+  height: 25px;
+}
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -38,7 +51,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .order-table tbody tr {
   background: white;
-  transition:  0.3s ease, transform 0.2s ease;
+  transition: 0.3s ease, transform 0.2s ease;
 }
 
 .order-table tbody tr:hover {
@@ -175,22 +188,29 @@ input[type="number"]::-webkit-outer-spin-button {
   text-align: center;
   border-radius: 10px;
 }
+
 .InputName {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  color: #1b212d;
-  font-family: "Kumbh Sans", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
   width: 100%;
-  box-sizing: border-box;
-  background: #f9f9f9;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 14px;
+  color: #374151;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.InputName:hover {
+  border-color: #6A1B9A;
+}
+
+.InputName::placeholder {
+  color: #9ca3af;
 }
 
 .InputName:focus {
-  border-color: #6a1b9a;
-  outline: none;
-  box-shadow: 0 0 5px rgba(106, 27, 154, 0.2);
+  border-color: #6A1B9A;
+  box-shadow: 0px 0px 8px rgba(106, 27, 154, 0.4);
 }

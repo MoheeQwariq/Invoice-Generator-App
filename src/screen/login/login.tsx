@@ -5,9 +5,9 @@ import Image from "../../assets/logIn.svg";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import InputField from "../../components/inputField";
 import { validateUser } from "../../utils/validation";
-import { ILogin, IUser } from "../../types";
+import { ILogIn, IUser } from "../../types";
 
-const Login = (props:ILogin) => {
+const Login = (props:ILogIn) => {
   const navigate = useNavigate();
   const initialUser: IUser = { email: "", password: "" };
   const initialError = { emailError: "", passwordError: "" };
@@ -33,11 +33,9 @@ const Login = (props:ILogin) => {
           emailError: "Invalid email",
           passwordError: "Invalid password",
         });
-   
       }
     }
   };
-
 
   const checkUserInLocalStorage = (user: IUser) => {
     const storedUsers = localStorage.getItem("users");
@@ -48,6 +46,7 @@ const Login = (props:ILogin) => {
     const existingUser = usersArray.find(
       (u: IUser) => u.email === user.email && u.password === user.password
     );
+
     if (existingUser) return true;
     return false;
   };
