@@ -77,6 +77,8 @@ export interface IPreview {
   client: IClient;
   invoice: IInvoice;
   pageType: string;
+  list:TableRow[];
+  
 }
 
 export interface IButton{

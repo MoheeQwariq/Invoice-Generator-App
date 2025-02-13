@@ -1,7 +1,7 @@
 import CustomButton from "../../components/customButton";
 import PreviewInvoice from "../../components/previewInvoice";
 import OrderTable from "../../components/Table";
-import { IBusinessMan, IClient, IInvoice } from "../../types";
+import {IClient, IInvoice, TableRow } from "../../types";
 import "./create-invoice.css";
 import { useRef, useState } from "react";
 import preview from "../../assets/Eye.png";
@@ -51,6 +51,16 @@ const CreateInvoice = () => {
     status: true,
     paymentMethod: "Cash",
   };
+
+  const listItems: TableRow[]= [{
+    name: "Macbook pro 24",
+    price: 3000,
+    quantity: 1
+  },{
+    name: "Macbook pro 24",
+    price: 3000,
+    quantity: 2
+  }];
 
   const handleInvoiceChange = (
     e:
@@ -244,6 +254,7 @@ const CreateInvoice = () => {
             client={client}
             invoice={invoice}
             pageType="A4"
+            list={listItems}
           />
         </div>
 
@@ -252,6 +263,7 @@ const CreateInvoice = () => {
           client={client}
           invoice={invoice}
           pageType="A6"
+          list={listItems}
         />
 
         <div className="setting">
@@ -271,6 +283,7 @@ const CreateInvoice = () => {
             client={client}
             invoice={invoice}
             pageType="A4"
+            list={listItems}
           />
         </div>
       </div>
