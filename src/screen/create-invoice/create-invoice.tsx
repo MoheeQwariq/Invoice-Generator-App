@@ -36,12 +36,7 @@ const CreateInvoice = () => {
     email: "",
     address: "",
   });
-  const use: IBusinessMan = {
-    name: "Mohee Qwariq",
-    email: "moheedeab16@gmail.com",
-    phone: "0599123123",
-    address: "Nablus",
-  };
+
   const client: IClient = {
     name: "Osama Ghneem",
     email: "Osama_Ghneem@gmail.com",
