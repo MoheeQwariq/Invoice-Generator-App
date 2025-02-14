@@ -50,6 +50,7 @@ export type ButtonProps = {
     onClick: (item: string) => void;
 };
 
+
 export interface InvoiceCardProps {
     clientName: string;
     clientEmail: string;
@@ -61,3 +62,4 @@ export interface InvoiceCardProps {
     onDelete: () => void;
     onEdit: () => void;
 }
+

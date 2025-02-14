@@ -1,4 +1,6 @@
+
 import { FC, useEffect, useState } from "react";
+
 import { Link, useNavigate } from "react-router-dom";
 import "./sidebar.css";
 import {
@@ -9,7 +11,9 @@ import {
 import { CiSettings } from "react-icons/ci";
 import { ButtonProps } from "../../types";
 import AppIcon from "../../assets/PayInvo.png";
+
 import { useLocation } from "react-router";
+
 
 const menuItems = [
   { name: "Dashboard", icon: IoHomeOutline, path: "/CreateInvoice" },
@@ -46,6 +50,7 @@ const NavButton: FC<ButtonProps> = ({
 const Sidebar = ({ onLogout }: { onLogout: () => void }) => {
   const [activeItem, setActiveItem] = useState<string>("");
   const navigate = useNavigate();
+
   const location = useLocation();
 
   useEffect(() => {
@@ -55,6 +60,7 @@ const Sidebar = ({ onLogout }: { onLogout: () => void }) => {
       setActiveItem(activeMenuItem.name);
     }
   }, [location.pathname]);
+
 
   const handleClick = (item: string) => {
     setActiveItem(item);

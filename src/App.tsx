@@ -10,7 +10,9 @@ import Login from "./screen/login";
 import Navbar from "./components/navbar/navbar";
 import Sidebar from "./components/sidebar/sidebar";
 import CreateInvoice from "./screen/create-invoice/create-invoice";
+
 import CardList from "./screen/invoicesList/invoiceList";
+
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -43,12 +45,14 @@ const App = () => {
             isAuthenticated ? <CreateInvoice /> : <Navigate to="/Login" />
           }
         />
+
         <Route
           path="/CardList"
           element={
             isAuthenticated ? <CardList /> : <Navigate to="/Login" />
           }
         />
+
       </Routes>
     </Router>
   );

@@ -5,6 +5,7 @@ import Image from "../../assets/logIn.svg";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import InputField from "../../components/inputField";
 import { validateUser } from "../../utils/validation";
+
 import { IlogIn, IUser } from "../../types";
 import Logo from "../../assets/PayInvo.png";
 
