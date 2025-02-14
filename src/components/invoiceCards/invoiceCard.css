@@ -1,0 +1,139 @@
+.invoice-card {
+    display: flex;
+    justify-content: flex-start;
+    padding: 8px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.invoice-card:hover {
+    transform: translateY(-4px);
+    background-color: #f1f1f1;
+}
+
+.client-email {
+    font-size: 0.8em;
+    color: #888;
+}
+
+
+
+/* .client {
+    flex: 2;
+
+
+} */
+
+.invoice-item {
+    flex: 1;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.circular-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.client-info {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.client-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.client-name {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.invoice-number {
+    font-size: 0.8em;
+    color: #888;
+}
+
+.delete-icon {
+    color: #f00;
+}
+
+.edit-icon,
+.delete-icon {
+    cursor: pointer;
+    margin: 0 5px;
+
+    font-size: 1.2em;
+
+    transition: color 0.3s, transform 0.3s;
+
+}
+
+.edit-icon {
+    color: #6f0ae2;
+
+}
+
+.edit-icon:hover,
+.delete-icon:hover {
+    /* color: #4e0369; */
+    transform: scale(1.2);
+
+}
+
+.action-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.action-icons i {
+    background-color: #f1f1f1;
+    border-radius: 20%;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+.action-icons i:hover {
+    background-color: #e0e0e0;
+
+}
+
+.Paid,
+.UnPaid {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    /* font-weight: bolder; */
+    text-align: center;
+    min-width: 10px;
+
+}
+
+
+.Paid {
+    background-color: #d4edda;
+    color: #155724;
+
+}
+
+.UnPaid {
+    background-color: #f8d7da;
+    color: #721c24;
+
+}

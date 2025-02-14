@@ -1,4 +1,5 @@
-import OrderTable from "../../components/table";
+
+import OrderTable from "../../components/Table";
 import "./create-invoice.css";
 import { useState } from "react";
 
