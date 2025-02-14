@@ -61,8 +61,8 @@ const CardList: React.FC = () => {
   const { filterType, setFilterType, filterValue, setFilterValue, searchQuery, setSearchQuery, filteredInvoices, applyFilter } = useInvoiceFilter(invoiceList);
   const { invoiceListDelte, handleDelete, confirmDelete, cancelDelete, showConfirmDelete} = useDelete(invoiceList); 
 
-  const handleEdit = (invoice: InvoiceCardProps) => {
-    navigate('./create-invoice', { state: { invoice } });
+  const handleCreateInvoie = () => {
+    navigate("/CreateInvoice");
   };
 
   const handleApplyFilter = () => {
@@ -91,7 +91,7 @@ const CardList: React.FC = () => {
           onSearch={applyFilter}
         />
         <div className='buttons'>
-          <button className='create-invoice'>
+          <button className='create-invoice' onClick={handleCreateInvoie}>
             <FaFileInvoice className='icon' /> Create Invoice
           </button>
           <button className='filter' onClick={() => setShowFilter(!showFilter)}>
@@ -133,7 +133,7 @@ const CardList: React.FC = () => {
               key={invoice.invoiceNumber}
               {...invoice}
               onDelete={() => handleDeleteInvoice(invoice)}
-              onEdit={() => handleEdit(invoice)}
+              onEdit={() => handleCreateInvoie() }
             />
           ))}
         </div>
