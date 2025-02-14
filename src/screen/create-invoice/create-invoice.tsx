@@ -1,7 +1,7 @@
 import CustomButton from "../../components/customButton";
 import PreviewInvoice from "../../components/previewInvoice";
-import OrderTable from "../../components/Table";
-import {IClient, IInvoice, TableRow } from "../../types";
+import OrderTable from "../../components/table";
+import { IClient, IInvoice, TableRow } from "../../types";
 import "./create-invoice.css";
 import { useRef, useState } from "react";
 import preview from "../../assets/Eye.png";
@@ -52,15 +52,18 @@ const CreateInvoice = () => {
     paymentMethod: "Cash",
   };
 
-  const listItems: TableRow[]= [{
-    name: "Macbook pro 24",
-    price: 3000,
-    quantity: 1
-  },{
-    name: "Macbook pro 24",
-    price: 3000,
-    quantity: 2
-  }];
+  const listItems: TableRow[] = [
+    {
+      name: "Macbook pro 24",
+      price: 3000,
+      quantity: 1,
+    },
+    {
+      name: "Macbook pro 24",
+      price: 3000,
+      quantity: 2,
+    },
+  ];
 
   const handleInvoiceChange = (
     e:
@@ -242,13 +245,7 @@ const CreateInvoice = () => {
         </div>
       </div>
       <div>
-        <div
-          ref={previewRef}
-          style={{
-            position: "absolute",
-            left: "-9999px",
-          }}
-        >
+        <div className="hidden" ref={previewRef}>
           <PreviewInvoice
             user={user}
             client={client}
@@ -276,18 +273,18 @@ const CreateInvoice = () => {
         </div>
       </div>
       {isOpen && (
-      <div className="modal-overlay" onClick={closeModal}>
-        <div className="modal-content">
-          <PreviewInvoice
-            user={user}
-            client={client}
-            invoice={invoice}
-            pageType="A4"
-            list={listItems}
-          />
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content">
+            <PreviewInvoice
+              user={user}
+              client={client}
+              invoice={invoice}
+              pageType="A4"
+              list={listItems}
+            />
+          </div>
         </div>
-      </div>
-    )}
+      )}
     </div>
   );
 };
