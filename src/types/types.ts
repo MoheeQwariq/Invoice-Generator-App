@@ -87,3 +87,15 @@ export interface IButton{
   onClick: () => void;
   className?: string; 
 }
+export interface InvoiceCardProps {
+    clientName: string;
+    clientEmail: string;
+    invoiceNumber: string;
+    date: string;
+    totalAmount: number;
+    status: string;
+    profileImage?: string;
+    onDelete: () => void;
+    onEdit: () => void;
+}
+

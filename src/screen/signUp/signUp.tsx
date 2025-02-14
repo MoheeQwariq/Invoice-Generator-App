@@ -5,6 +5,9 @@ import "./signUp.css"
 import { validateForm } from "../../utils/validation";
 import AccountImage from '../../assets/signup.svg';
 import InputField from "../../components/inputField/InputField";
+
+import Logo from "../../assets/PayInvo.png";
+
 import { FormData, IlogIn } from "../../types";
 const SignUp = (props:IlogIn) => {
     const [formData, setFormData] = useState<FormData>({
@@ -57,6 +60,10 @@ const SignUp = (props:IlogIn) => {
 
     return (
      <div className="sign-up-page">
+         <div className="login-header">
+        <img src={Logo} alt="Logo" className="header-logo" />
+        <span className="header-text">PayInvo</span>
+      </div>
         <div className="sign-up-container">
             <div className="sign-up-form">
                 <div className="container">

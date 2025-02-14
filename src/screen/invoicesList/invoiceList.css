@@ -1,0 +1,104 @@
+body {
+    font-family: math;
+    padding: 20px;
+}
+
+.AllInvoices {
+    margin-left: 250px;
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.containerr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.create-invoice {
+    display: flex;
+    align-items: center;
+    background-color: #ba97ff9a;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.create-invoice .icon {
+    margin-right: 8px;
+}
+
+.filter {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.filter:hover {
+    background-color: #6A1B9A;
+
+    color: white;
+    transition: border-color 0.3s ease;
+    /* color: white; */
+}
+
+.filter .icon {
+    margin-right: 8px;
+}
+
+
+.invoice-container {
+    /* flex: 1; */
+    width: 1100px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.invoice-header {
+    display: flex;
+    justify-content: flex-start;
+    padding: 16px;
+    color: #7e8082;
+    font-weight: 300;
+    text-align: center;
+}
+
+.cards-container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+.header-item {
+    flex: 1;
+    padding: 0 10px;
+}
+
+.client {
+    flex: 2;
+
+
+}

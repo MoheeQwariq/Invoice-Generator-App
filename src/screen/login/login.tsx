@@ -5,14 +5,17 @@ import Image from "../../assets/logIn.svg";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import InputField from "../../components/inputField";
 import { validateUser } from "../../utils/validation";
-import { ILogIn, IUser } from "../../types";
 
-const Login = (props:ILogIn) => {
+import { IlogIn, IUser } from "../../types";
+import Logo from "../../assets/PayInvo.png";
+
+const Login = (props:IlogIn) => {
   const navigate = useNavigate();
   const initialUser: IUser = { email: "", password: "" };
   const initialError = { emailError: "", passwordError: "" };
   const [user, setUser] = useState(initialUser);
   const [errors, setErrors] = useState(initialError);
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -53,6 +56,10 @@ const Login = (props:ILogIn) => {
 
   return (
     <div className="login-page">
+      <div className="login-header">
+        <img src={Logo} alt="Logo" className="header-logo" />
+        <span className="header-text">PayInvo</span>
+      </div>
       <div className="login-container">
         <div className="login-form">
           <div className="container">
