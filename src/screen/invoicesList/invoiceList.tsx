@@ -9,6 +9,7 @@ import DeleteConfirmationModal from '../../components/deleteConfirmationModal/de
 import useDelete from '../../hook/useDelete';
 import useInvoiceFilter from '../../hook/useInvoiceFilter';
 import { useNavigate } from 'react-router-dom';
+import useSearch from '../../hook/useSearch';
 
 const sampleInvoices: InvoiceCardProps[] = [
   {
@@ -58,9 +59,15 @@ const CardList: React.FC = () => {
   const [showFilter, setShowFilter] = useState(false);
   const [invoiceList, setInvoiceList] = useState<InvoiceCardProps[]>(sampleInvoices);  // Keeping the state of invoices
  
-  const { filterType, setFilterType, filterValue, setFilterValue, searchQuery, setSearchQuery, filteredInvoices, applyFilter } = useInvoiceFilter(invoiceList);
   const { invoiceListDelte, handleDelete, confirmDelete, cancelDelete, showConfirmDelete} = useDelete(invoiceList); 
 
+  const [mainInvoiceList, setMainInvoiceList] = useState<InvoiceCardProps[]>(sampleInvoices);  // Keeping the state of invoices
+  // const { filterType, setFilterType, filterValue, setFilterValue, filteredInvoices, applyFilter } = useInvoiceFilter(mainInvoiceList);
+  const { 
+    filterType, setFilterType, filterValue, setFilterValue, 
+    filterStatus, setFilterStatus, filteredInvoices, applyFilter 
+  } = useInvoiceFilter(mainInvoiceList);
+  const { searchQuery, setSearchQuery, searchResults, search } = useSearch(mainInvoiceList);
   const handleCreateInvoie = () => {
     navigate("/CreateInvoice");
   };
@@ -72,24 +79,31 @@ const CardList: React.FC = () => {
 
   const handleDeleteInvoice = (invoice: InvoiceCardProps) => {
     handleDelete(invoice);
+
   };
 
   useEffect(() => {
-    setInvoiceList(invoiceListDelte);  
+    setInvoiceList(invoiceListDelte); 
+    setMainInvoiceList(invoiceListDelte); 
+    
   }, [invoiceListDelte]);
 
   useEffect(() => {
-    setInvoiceList(filteredInvoices);  // Update the invoice list when filteredInvoices change
+    setInvoiceList(filteredInvoices); 
+
   }, [filteredInvoices]);
+  useEffect(() => {
+    setInvoiceList(searchResults); 
+
+  }, [searchResults]);
 
   return (
     <div className='AllInvoices'>
       <div className='containerr'>
-        <SearchBar
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          onSearch={applyFilter}
-        />
+      <SearchBar searchQuery={searchQuery} 
+         setSearchQuery={setSearchQuery} 
+         search={search}
+         />
         <div className='buttons'>
           <button className='create-invoice' onClick={handleCreateInvoie}>
             <FaFileInvoice className='icon' /> Create Invoice
@@ -102,12 +116,14 @@ const CardList: React.FC = () => {
 
       {showFilter && (
         <FilterModal
-          filterType={filterType}
-          setFilterType={setFilterType}
-          filterValue={filterValue}
-          setFilterValue={setFilterValue}
-          applyFilter={handleApplyFilter}
-          closeFilter={() => setShowFilter(false)}
+        filterType={filterType}
+        setFilterType={setFilterType}
+        filterValue={filterValue}
+        setFilterValue={setFilterValue}
+        filterStatus={filterStatus}
+        setFilterStatus={setFilterStatus}
+        applyFilter={handleApplyFilter}
+        closeFilter={() => setShowFilter(false)}
         />
       )}
 
