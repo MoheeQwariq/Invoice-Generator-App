@@ -2,7 +2,6 @@ import CustomButton from "../../components/customButton";
 import PreviewInvoice from "../../components/previewInvoice";
 import OrderTable from "../../components/table";
 import { IClient, IInvoice, TableRow } from "../../types";
-import OrderTable from "../../components/Table";
 import "./create-invoice.css";
 import { useRef, useState } from "react";
 import preview from "../../assets/Eye.png";
