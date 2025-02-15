@@ -105,14 +105,14 @@ const PreviewInvoice = (props: IPreview) => {
                 <strong>Total</strong>
               </td>
               <td>
-              <strong>
-                $
-                {(
-                  list.reduce(
-                    (sum, item) => sum + item.quantity * item.price,
-                    0
-                  ) * 1.1
-                ).toFixed(2)}
+                <strong>
+                  $
+                  {(
+                    list.reduce(
+                      (sum, item) => sum + item.quantity * item.price,
+                      0
+                    ) * 1.1
+                  ).toFixed(2)}
                 </strong>
               </td>
             </tr>

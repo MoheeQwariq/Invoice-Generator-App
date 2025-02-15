@@ -77,25 +77,40 @@ export interface IPreview {
   client: IClient;
   invoice: IInvoice;
   pageType: string;
-  list:TableRow[];
-  
+  list: TableRow[];
 }
 
-export interface IButton{
+export interface IButton {
   icon: string;
   text: string;
   onClick: () => void;
-  className?: string; 
+  className?: string;
 }
 export interface InvoiceCardProps {
-    clientName: string;
-    clientEmail: string;
-    invoiceNumber: string;
-    date: string;
-    totalAmount: number;
-    status: string;
-    profileImage?: string;
-    onDelete: () => void;
-    onEdit: () => void;
+  clientName: string;
+  clientEmail: string;
+  invoiceNumber: string;
+  date: string;
+  totalAmount: number;
+  status: string;
+  profileImage?: string;
+  onDelete: () => void;
+  onEdit: () => void;
+}
+export interface DeleteConfirmationModalProps {
+  onConfirm: () => void;
+  onCancel: () => void;
 }
 
+export interface FilterModalProps {
+  filterType: string;
+  setFilterType: React.Dispatch<React.SetStateAction<string>>;
+  filterValue: string;
+  setFilterValue: React.Dispatch<React.SetStateAction<string>>;
+  filterStatus: { paid: boolean; unpaid: boolean };
+  setFilterStatus: React.Dispatch<
+    React.SetStateAction<{ paid: boolean; unpaid: boolean }>
+  >;
+  applyFilter: () => void;
+  closeFilter: () => void;
+}

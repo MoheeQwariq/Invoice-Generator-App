@@ -1,9 +1,6 @@
 import React from 'react';
 import './deleteConfirmationModal.css';
-interface DeleteConfirmationModalProps {
-  onConfirm: () => void;
-  onCancel: () => void;
-}
+import { DeleteConfirmationModalProps } from '../../types';
 
 const DeleteConfirmationModal: React.FC<DeleteConfirmationModalProps> = ({ onConfirm, onCancel }) => {
   return (
