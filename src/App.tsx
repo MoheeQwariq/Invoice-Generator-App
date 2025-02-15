@@ -7,7 +7,7 @@ import {
 import { useState } from "react";
 import SignUp from "./screen/signUp";
 import Login from "./screen/login";
-import CreateInvoice from "./screen/create-invoice";
+import CreateInvoice from "./screen/createInvoice";
 import Navbar from "./components/navbar";
 import Sidebar from "./components/sidebar";
 import CardList from "./screen/invoicesList";

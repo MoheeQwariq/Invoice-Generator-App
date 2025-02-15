@@ -1,6 +1,5 @@
 import CustomButton from "../../components/customButton";
 import PreviewInvoice from "../../components/previewInvoice";
-import OrderTable from "../../components/table";
 import { IClient, IInvoice, TableRow } from "../../types";
 import "./createInvoice.css";
 import { useRef, useState } from "react";
@@ -8,6 +7,7 @@ import preview from "../../assets/eye.png";
 import download from "../../assets/download.png";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import OrderTable from "../../components/table";
 
 const CreateInvoice = () => {
   const previewRef = useRef<HTMLDivElement>(null);
