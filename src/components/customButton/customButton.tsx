@@ -1,6 +1,6 @@
 import React from "react";
 import { IButton } from "../../types/types";
-import "./CustomButton.css"; // Import CSS file
+import "./CustomButton.css";
 
 const CustomButton: React.FC<IButton> = ({ icon, text, onClick, className }) => {
   return (

@@ -1,37 +1,36 @@
 .custom-button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 16px;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    background-color: white;
-    color: #333; 
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .custom-button:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .custom-button:active {
-    transform: scale(0.95);
-  }
-  
-  .custom-button:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .button-icon {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .button-text {
-    font-size: 16px;
-  }
-  
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-button:hover {
+  background-color: #f0f0f0;
+}
+
+.custom-button:active {
+  transform: scale(0.95);
+}
+
+.custom-button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.button-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.button-text {
+  font-size: 16px;
+}

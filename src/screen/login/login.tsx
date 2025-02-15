@@ -9,13 +9,12 @@ import { validateUser } from "../../utils/validation";
 import { IlogIn, IUser } from "../../types";
 import Logo from "../../assets/PayInvo.png";
 
-const Login = (props:IlogIn) => {
+const Login = (props: IlogIn) => {
   const navigate = useNavigate();
   const initialUser: IUser = { email: "", password: "" };
   const initialError = { emailError: "", passwordError: "" };
   const [user, setUser] = useState(initialUser);
   const [errors, setErrors] = useState(initialError);
-  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -30,8 +29,8 @@ const Login = (props:IlogIn) => {
     if (!validationErrors.emailError && !validationErrors.passwordError) {
       if (checkUserInLocalStorage(user)) {
         props.onLogin();
-        navigate("/CreateInvoice");}
-      else {
+        navigate("/CreateInvoice");
+      } else {
         setErrors({
           emailError: "Invalid email",
           passwordError: "Invalid password",
@@ -88,7 +87,9 @@ const Login = (props:IlogIn) => {
                 icon={faLock}
               />
 
-              <button className='ButtonLogIn' type="submit">Login</button>
+              <button className="ButtonLogIn" type="submit">
+                Login
+              </button>
             </form>
 
             <p className="signup-text">

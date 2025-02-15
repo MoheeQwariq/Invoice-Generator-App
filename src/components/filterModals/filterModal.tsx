@@ -1,20 +1,16 @@
-
-import React from 'react';
-import './filterModal.css';
-
-interface FilterModalProps {
-  filterType: string;
-  setFilterType: React.Dispatch<React.SetStateAction<string>>;
-  filterValue: string;
-  setFilterValue: React.Dispatch<React.SetStateAction<string>>;
-  filterStatus: { paid: boolean; unpaid: boolean };
-  setFilterStatus: React.Dispatch<React.SetStateAction<{ paid: boolean; unpaid: boolean }>>;
-  applyFilter: () => void;
-  closeFilter: () => void;
-}
+import React from "react";
+import "./filterModal.css";
+import { FilterModalProps } from "../../types";
 
 const FilterModal: React.FC<FilterModalProps> = ({
-  filterType, setFilterType, filterValue, setFilterValue, filterStatus, setFilterStatus, applyFilter, closeFilter
+  filterType,
+  setFilterType,
+  filterValue,
+  setFilterValue,
+  filterStatus,
+  setFilterStatus,
+  applyFilter,
+  closeFilter,
 }) => {
   return (
     <div className="filter-modal">
@@ -22,33 +18,42 @@ const FilterModal: React.FC<FilterModalProps> = ({
         <h3>Apply Filters</h3>
         <div className="filter-options">
           <label>Filter By:</label>
-          <select value={filterType} onChange={(e) => setFilterType(e.target.value)}>
-            <option value=''>Select Filter Type</option>
-            <option value='Client Name'>Client Name</option>
-            <option value='Invoice Number'>Invoice Number</option>
-            <option value='Date'>Date</option>
-            <option value='Status'>Status</option>
+          <select
+            value={filterType}
+            onChange={(e) => setFilterType(e.target.value)}
+          >
+            <option value="">Select Filter Type</option>
+            <option value="Client Name">Client Name</option>
+            <option value="Invoice Number">Invoice Number</option>
+            <option value="Date">Date</option>
+            <option value="Status">Status</option>
           </select>
         </div>
-        {filterType === 'Status' && (
+        {filterType === "Status" && (
           <div className="filter-checkboxes">
             <label>
-              <input 
-                type="checkbox" 
-                checked={filterStatus.paid} 
-                onChange={() => setFilterStatus(prev => ({ ...prev, paid: !prev.paid }))} 
-              /> Paid
+              <input
+                type="checkbox"
+                checked={filterStatus.paid}
+                onChange={() =>
+                  setFilterStatus((prev) => ({ ...prev, paid: !prev.paid }))
+                }
+              />{" "}
+              Paid
             </label>
             <label>
-              <input 
-                type="checkbox" 
-                checked={filterStatus.unpaid} 
-                onChange={() => setFilterStatus(prev => ({ ...prev, unpaid: !prev.unpaid }))} 
-              /> UnPaid
+              <input
+                type="checkbox"
+                checked={filterStatus.unpaid}
+                onChange={() =>
+                  setFilterStatus((prev) => ({ ...prev, unpaid: !prev.unpaid }))
+                }
+              />{" "}
+              UnPaid
             </label>
           </div>
         )}
-        {filterType === 'Date' && (
+        {filterType === "Date" && (
           <div className="filter-input">
             <label>Select Date:</label>
             <input
@@ -58,7 +63,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
             />
           </div>
         )}
-        {filterType !== 'Status' && filterType !== 'Date' && filterType && (
+        {filterType !== "Status" && filterType !== "Date" && filterType && (
           <div className="filter-input">
             <label>Enter {filterType}:</label>
             <input

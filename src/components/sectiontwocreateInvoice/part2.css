@@ -7,10 +7,8 @@
   background: #f9f9f9;
   border-radius: 10px;
   width: 100%;
-  max-width:550px;
+  max-width: 550px;
 }
-
-
 
 .EditButton {
   background: none;
@@ -123,9 +121,11 @@ input {
 .client-detailsText {
   color: var(--text-color-text-1, #1b212d);
   text-align: left;
-  font-family: var(--size-16-size-16-semibold-font-family,
-      "KumbhSans-SemiBold",
-      sans-serif);
+  font-family: var(
+    --size-16-size-16-semibold-font-family,
+    "KumbhSans-SemiBold",
+    sans-serif
+  );
   font-size: var(--size-16-size-16-semibold-font-size, 16px);
   font-weight: var(--size-16-size-16-semibold-font-weight, 600);
   position: relative;
@@ -162,9 +162,11 @@ input {
 .UserNameText1 {
   color: var(--text-color-text-1, #1b212d);
   text-align: left;
-  font-family: var(--size-16-size-16-semibold-font-family,
-      "KumbhSans-SemiBold",
-      sans-serif);
+  font-family: var(
+    --size-16-size-16-semibold-font-family,
+    "KumbhSans-SemiBold",
+    sans-serif
+  );
   font-size: var(--size-16-size-16-semibold-font-size, 16px);
   font-weight: var(--size-16-size-16-semibold-font-weight, 600);
   position: relative;
@@ -173,9 +175,11 @@ input {
 .UserNameText2 {
   color: var(--text-color-text-2, #929eae);
   text-align: left;
-  font-family: var(--size-16-size-16-regular-font-family,
-      "KumbhSans-Regular",
-      sans-serif);
+  font-family: var(
+    --size-16-size-16-regular-font-family,
+    "KumbhSans-Regular",
+    sans-serif
+  );
   font-size: var(--size-16-size-16-regular-font-size, 16px);
   font-weight: var(--size-16-size-16-regular-font-weight, 400);
   position: relative;
@@ -217,9 +221,11 @@ input {
 .CompanyName1 {
   color: var(--text-color-text-1, #1b212d);
   text-align: left;
-  font-family: var(--size-16-size-16-semibold-font-family,
-      "KumbhSans-SemiBold",
-      sans-serif);
+  font-family: var(
+    --size-16-size-16-semibold-font-family,
+    "KumbhSans-SemiBold",
+    sans-serif
+  );
   font-size: var(--size-16-size-16-semibold-font-size, 16px);
   font-weight: var(--size-16-size-16-semibold-font-weight, 600);
   position: relative;
@@ -236,9 +242,11 @@ input {
 .CompanyName2 {
   color: var(--text-color-text-2, #929eae);
   text-align: left;
-  font-family: var(--size-16-size-16-regular-font-family,
-      "KumbhSans-Regular",
-      sans-serif);
+  font-family: var(
+    --size-16-size-16-regular-font-family,
+    "KumbhSans-Regular",
+    sans-serif
+  );
   font-size: var(--size-16-size-16-regular-font-size, 16px);
   font-weight: var(--size-16-size-16-regular-font-weight, 400);
   position: relative;
@@ -258,14 +266,15 @@ input {
   flex-shrink: 0;
   width: 100%;
   position: relative;
-  font-family: var(--size-14-size-14-semibold-font-family,
-      "KumbhSans-SemiBold",
-      sans-serif);
+  font-family: var(
+    --size-14-size-14-semibold-font-family,
+    "KumbhSans-SemiBold",
+    sans-serif
+  );
   font-size: var(--size-14-size-14-semibold-font-size, 14px);
   font-weight: var(--size-14-size-14-semibold-font-weight, 600);
   position: relative;
 }
-
 
 .basicInfo {
   background: var(--text-color-pure-white, #ffffff);
@@ -286,9 +295,11 @@ input {
 .basicInfoText {
   color: var(--text-color-text-1, #1b212d);
   text-align: left;
-  font-family: var(--extra-font-size-18-semibold-font-family,
-      "KumbhSans-SemiBold",
-      sans-serif);
+  font-family: var(
+    --extra-font-size-18-semibold-font-family,
+    "KumbhSans-SemiBold",
+    sans-serif
+  );
   font-size: var(--extra-font-size-18-semibold-font-size, 18px);
   font-weight: var(--extra-font-size-18-semibold-font-weight, 600);
   position: relative;
@@ -330,9 +341,11 @@ input {
 .InvoiceDateText {
   color: var(--text-color-text-2, #929eae);
   text-align: left;
-  font-family: var(--size-14-size-14-regular-font-family,
-      "KumbhSans-Regular",
-      sans-serif);
+  font-family: var(
+    --size-14-size-14-regular-font-family,
+    "KumbhSans-Regular",
+    sans-serif
+  );
   font-size: var(--size-14-size-14-regular-font-size, 14px);
   font-weight: var(--size-14-size-14-regular-font-weight, 400);
   position: relative;
@@ -347,9 +360,11 @@ input {
 .inputText {
   color: var(--text-color-text-1, #1b212d);
   text-align: left;
-  font-family: var(--size-14-size-14-medium-font-family,
-      "KumbhSans-Medium",
-      sans-serif);
+  font-family: var(
+    --size-14-size-14-medium-font-family,
+    "KumbhSans-Medium",
+    sans-serif
+  );
   font-size: var(--size-14-size-14-medium-font-size, 14px);
   font-weight: var(--size-14-size-14-medium-font-weight, 500);
   width: 100%;
@@ -364,10 +379,7 @@ input {
   flex-shrink: 0;
   width: 100%;
   position: relative;
-
 }
-
-
 
 .SendInvoice {
   color: #ffff;
@@ -383,9 +395,11 @@ input {
   flex-shrink: 0;
   width: 100%;
   position: relative;
-  font-family: var(--size-14-size-14-semibold-font-family,
-      "KumbhSans-SemiBold",
-      sans-serif);
+  font-family: var(
+    --size-14-size-14-semibold-font-family,
+    "KumbhSans-SemiBold",
+    sans-serif
+  );
   font-size: var(--size-14-size-14-semibold-font-size, 14px);
   font-weight: var(--size-14-size-14-semibold-font-weight, 600);
   position: relative;
@@ -423,20 +437,20 @@ input {
   height: 20px;
   position: relative;
   overflow: visible;
-
 }
 
 .previewText {
   color: #6a1b9a;
   text-align: center;
-  font-family: var(--size-14-size-14-semibold-font-family,
-      "KumbhSans-SemiBold",
-      sans-serif);
+  font-family: var(
+    --size-14-size-14-semibold-font-family,
+    "KumbhSans-SemiBold",
+    sans-serif
+  );
   font-size: var(--size-14-size-14-semibold-font-size, 14px);
   font-weight: var(--size-14-size-14-semibold-font-weight, 600);
   position: relative;
 }
-
 
 .downloadImage {
   flex-shrink: 0;
@@ -449,9 +463,11 @@ input {
 .downloadText {
   color: #6a1b9a;
   text-align: center;
-  font-family: var(--size-14-size-14-semibold-font-family,
-      "KumbhSans-SemiBold",
-      sans-serif);
+  font-family: var(
+    --size-14-size-14-semibold-font-family,
+    "KumbhSans-SemiBold",
+    sans-serif
+  );
   font-size: var(--size-14-size-14-semibold-font-size, 14px);
   font-weight: var(--size-14-size-14-semibold-font-weight, 600);
   position: relative;

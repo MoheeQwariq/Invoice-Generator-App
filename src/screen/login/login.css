@@ -8,12 +8,6 @@
   user-select: none;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  color: #333;
-}
-
 .login-container {
   display: flex;
   justify-content: space-between;

@@ -1,45 +1,43 @@
 .form-group {
-    display: flex;
-    align-items: center;
-    position: relative;
-    margin-bottom: 30px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 5px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .form-group .icon {
-    font-size: 20px;
-    color: #6a1b9a;
-    margin-left: 10px;
+  font-size: 20px;
+  color: #6a1b9a;
+  margin-left: 10px;
 }
 
 .form-group input {
-    padding: 10px;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    margin-left: 10px;
-    width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  margin-left: 10px;
+  width: 100%;
 }
 
-
 .form-group .toggle-password {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 18px;
-
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
 }
 
 .error {
-    position: absolute;
-    bottom: -35px;
-    left: 0;
-    color: #a94442;
-    font-size: 14px;
-    margin-top: 5px;
+  position: absolute;
+  bottom: -35px;
+  left: 0;
+  color: #a94442;
+  font-size: 14px;
+  margin-top: 5px;
 }

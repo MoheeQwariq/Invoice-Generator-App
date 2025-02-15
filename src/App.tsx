@@ -7,12 +7,10 @@ import {
 import { useState } from "react";
 import SignUp from "./screen/signUp";
 import Login from "./screen/login";
-import Navbar from "./components/navbar/navbar";
-import Sidebar from "./components/sidebar/sidebar";
-import CreateInvoice from "./screen/create-invoice/create-invoice";
-
-import CardList from "./screen/invoicesList/invoiceList";
-
+import CreateInvoice from "./screen/create-invoice";
+import Navbar from "./components/navbar";
+import Sidebar from "./components/sidebar";
+import CardList from "./screen/invoicesList";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -48,11 +46,8 @@ const App = () => {
 
         <Route
           path="/CardList"
-          element={
-            isAuthenticated ? <CardList /> : <Navigate to="/Login" />
-          }
+          element={isAuthenticated ? <CardList /> : <Navigate to="/Login" />}
         />
-
       </Routes>
     </Router>
   );
