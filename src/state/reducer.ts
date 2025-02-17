@@ -14,20 +14,21 @@ const reducer = (state: IState, action: Action): IState => {
     case "LOGOUT":
       return { ...state, loggedInUser: null };
 
-    case "ADD_INVOICE":
+    case "ADD_INVOICE": {
       if (!state.loggedInUser) return state;
       const updatedUser = {
         ...state.loggedInUser,
         invoices: [...state.loggedInUser.invoices, action.payload],
       };
       return { ...state, loggedInUser: updatedUser };
-
-    case "SET_CURRENT_INVOICE":
+    }
+    case "SET_CURRENT_INVOICE": {
       if (!state.loggedInUser) return state;
       return {
         ...state,
         loggedInUser: { ...state.loggedInUser, currentInvoice: action.payload },
       };
+    }
 
     default:
       return state;
