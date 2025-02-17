@@ -26,10 +26,10 @@ const PreviewInvoice = (props: IPreview) => {
           <div className="box">
             <div className="invoice">
               <div className="invoiceLabel">Invoice No.</div>
-              <div className="invoiceCard">{invoice.InvoiceId}</div>
+              <div className="invoiceCard">{invoice.invoiceId}</div>
             </div>
             <div className="invoice">
-              <div className="invoiceLabel">Invoice Date</div>
+              <div className="invoiceLabel">Issue Date</div>
               <div className="invoiceCard">{invoice.issueDate}</div>
             </div>
             <div className="invoice">
@@ -76,27 +76,22 @@ const PreviewInvoice = (props: IPreview) => {
               <td>
                 <strong>Subtotal</strong>
               </td>
-              <td>
-                $
-                {list.reduce(
-                  (sum, item) => sum + item.quantity * item.price,
-                  0
-                )}
-              </td>
+              <td>${invoice.subTotal}</td>
             </tr>
             <tr>
               <td colSpan={2}></td>
               <td>
-                <strong>Tax (10%)</strong>
+                <strong>Tax ({invoice.tax}%)</strong>
+              </td>
+              <td>$ {(invoice.subTotal * (invoice.tax / 100)).toFixed(2)}</td>
+            </tr>
+            <tr>
+              <td colSpan={2}></td>
+              <td>
+                <strong>Discount ({invoice.discount}%)</strong>
               </td>
               <td>
-                $
-                {(
-                  list.reduce(
-                    (sum, item) => sum + item.quantity * item.price,
-                    0
-                  ) * 0.1
-                ).toFixed(2)}
+                $ {(invoice.subTotal * (invoice.discount / 100)).toFixed(2)}
               </td>
             </tr>
             <tr className="finalTotal">
@@ -107,11 +102,9 @@ const PreviewInvoice = (props: IPreview) => {
               <td>
                 <strong>
                   $
-                  {(
-                    list.reduce(
-                      (sum, item) => sum + item.quantity * item.price,
-                      0
-                    ) * 1.1
+                  {Number(
+                    invoice.subTotal * (1 + invoice.tax / 100) -
+                      invoice.subTotal * (invoice.discount / 100)
                   ).toFixed(2)}
                 </strong>
               </td>

@@ -264,3 +264,9 @@ select.input-field {
   position: absolute;
   left: -9999px;
 }
+
+.saveInvoice{
+  display: flex;
+  margin-top: 60px;
+  margin-left:120px;
+}

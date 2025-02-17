@@ -1,80 +1,100 @@
 import CustomButton from "../../components/customButton";
 import PreviewInvoice from "../../components/previewInvoice";
-import { IClient, IInvoice, TableRow } from "../../types";
 import "./createInvoice.css";
 import { useRef, useState } from "react";
 import preview from "../../assets/eye.png";
 import download from "../../assets/download.png";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import OrderTable from "../../components/table";
+import OrderTable from "../../components/Table";
+import { useUserContext } from "../../provider";
+import { IClient, IInvoice, TableRow } from "../../types";
 
 const CreateInvoice = () => {
   const previewRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
-
-  const users = JSON.parse(localStorage.getItem("users") || "[]") || [];
-  const user =
-    users.length > 0
-      ? users[0]
-      : { name: "", email: "", phone: "", address: "" };
-
-  const generateInvoiceNumber = () => {
-    return `INV-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
-  };
-
-  const [invoiceDetails, setInvoiceDetails] = useState({
-    invoiceNumber: generateInvoiceNumber(),
-    issuedDate: "",
-    dueDate: "",
-    status: "Unpaid",
-    paymentMethod: "",
-  });
-
-  const [clientDetails, setClientDetails] = useState({
-    clientName: "",
+  const [listItems, setListItems] = useState<TableRow[]>([]);
+  const [clientDetails, setClientDetails] = useState<IClient>({
+    name: "",
     email: "",
+    phone: "",
     address: "",
   });
+  const { state, dispatch } = useUserContext();
+  const [isTaxInputVisible, setIsTaxInputVisible] = useState(false);
+  const [isDiscountInputVisible, setIsDiscountInputVisible] = useState(false);
 
-  const client: IClient = {
-    name: "Osama Ghneem",
-    email: "Osama_Ghneem@gmail.com",
-    phone: "059959595",
-    address: "Bethlehem",
-  };
+  const user = state.loggedInUser;
+  if (!user) return <p>Please log in to create an invoice.</p>;
 
-  const invoice: IInvoice = {
-    InvoiceId: "INV-1739317809044-108",
-    dueDate: "10/9/2024",
-    issueDate: "12/2/2025",
+  const generateInvoiceNumber = () =>
+    `INV-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+
+  const [invoiceDetails, setInvoiceDetails] = useState<IInvoice>({
+    invoiceId: generateInvoiceNumber(),
+    issueDate: new Date().toISOString().split("T")[0],
+    dueDate: "",
     status: true,
-    paymentMethod: "Cash",
-  };
+    paymentMethod: "",
+    items: [],
+    subTotal: 0,
+    tax: 0,
+    discount: 0,
+  });
 
-  const listItems: TableRow[] = [
-    {
-      name: "Macbook pro 24",
-      price: 3000,
-      quantity: 1,
-    },
-    {
-      name: "Macbook pro 24",
-      price: 3000,
-      quantity: 2,
-    },
-  ];
+  const updateSubTotal = (items: TableRow[]) => {
+    const newSubTotal = items.reduce(
+      (sum, row) => sum + row.price * row.quantity,
+      0
+    );
+    setInvoiceDetails((prev) => ({
+      ...prev,
+      subTotal: newSubTotal,
+    }));
+  };
 
   const handleInvoiceChange = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    setInvoiceDetails({ ...invoiceDetails, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setInvoiceDetails((prev) => ({
+      ...prev,
+      [name]:
+        name === "tax" || name === "discount" ? Number(value) || 0 : value,
+    }));
+  };
+
+  const handleItemChange = (
+    index: number,
+    field: keyof TableRow,
+    value: string | number
+  ) => {
+    const updatedItems = [...listItems];
+    updatedItems[index] = { ...updatedItems[index], [field]: value };
+    setListItems(updatedItems);
+    updateSubTotal(updatedItems);
+  };
+
+  const addItem = () => {
+    const newItems = [...listItems, { name: "", price: 0, quantity: 1 }];
+    setListItems(newItems);
+    updateSubTotal(newItems);
+  };
+
+  const removeItem = (index: number) => {
+    const newItems = listItems.filter((_, i) => i !== index);
+    setListItems(newItems);
+    updateSubTotal(newItems);
   };
 
   const handleClientChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setClientDetails({ ...clientDetails, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = () => {
+    const newInvoice = { ...invoiceDetails, items: listItems };
+    dispatch({ type: "ADD_INVOICE", payload: newInvoice });
+    dispatch({ type: "SET_CURRENT_INVOICE", payload: newInvoice });
   };
 
   const handlePreview = () => {
@@ -92,7 +112,7 @@ const CreateInvoice = () => {
     }
 
     const element = previewRef.current;
-    const canvas = await html2canvas(element, { scale: 5 });
+    const canvas = await html2canvas(element, { scale: 2 });
     const imgData = canvas.toDataURL("image/png");
 
     const pdf = new jsPDF({
@@ -117,7 +137,7 @@ const CreateInvoice = () => {
             </div>
             <div className="G2">
               <div className="textG2">{user.address}</div>
-              <div className="phone">{user.phone || "No Phone Available"}</div>
+              <div className="phone">{user.phone}</div>
             </div>
           </div>
           <div className="card-theme-off">
@@ -127,7 +147,7 @@ const CreateInvoice = () => {
                 <div className="InvoiceDetails">
                   <div className="InvoiceDetailsText">Invoice Number</div>
                   <div className="LargeInvoiceNumber">
-                    {invoiceDetails.invoiceNumber}
+                    {invoiceDetails.invoiceId}
                   </div>
                 </div>
                 <div className="InvoiceDetails">
@@ -139,20 +159,6 @@ const CreateInvoice = () => {
                       value={invoiceDetails.dueDate}
                       onChange={handleInvoiceChange}
                       className="input-field"
-                      placeholder="Due Date"
-                    />
-                  </div>
-                </div>
-                <div className="InvoiceDetails">
-                  <div className="InvoiceDetailsText">Issued Date</div>
-                  <div className="input-container">
-                    <input
-                      type="date"
-                      name="issuedDate"
-                      className="input-field"
-                      value={invoiceDetails.issuedDate}
-                      onChange={handleInvoiceChange}
-                      placeholder="Issued Date"
                     />
                   </div>
                 </div>
@@ -163,15 +169,20 @@ const CreateInvoice = () => {
                       id="status"
                       name="status"
                       className="input-field"
-                      value={invoiceDetails.status}
-                      onChange={handleInvoiceChange}
+                      value={invoiceDetails.status ? "Paid" : "Unpaid"}
+                      onChange={(e) =>
+                        setInvoiceDetails({
+                          ...invoiceDetails,
+                          status: e.target.value === "Paid",
+                        })
+                      }
                     >
                       <option value="Unpaid">Unpaid</option>
                       <option value="Paid">Paid</option>
                     </select>
                   </div>
                 </div>
-                {invoiceDetails.status === "Paid" && (
+                {invoiceDetails.status && (
                   <div className="InvoiceDetails">
                     <div className="InvoiceDetailsText">Payment Method</div>
                     <div className="input-container">
@@ -193,21 +204,33 @@ const CreateInvoice = () => {
               </div>
             </div>
             <div className="billed-to">
-              <div className="billed-to2">Billed to</div>
+              <div className="billed-to2">Bill to</div>
               <div className="info2">
                 <div className="InvoiceDetails">
                   <div className="InvoiceDetailsText">Client Name</div>
                   <div className="input-container">
                     <input
                       type="text"
-                      name="clientName"
+                      name="name"
                       className="input-field"
-                      value={clientDetails.clientName}
+                      value={clientDetails.name}
                       onChange={handleClientChange}
-                      placeholder="Client Name"
                     />
                   </div>
                 </div>
+                <div className="InvoiceDetails">
+                  <div className="InvoiceDetailsText">Client phone</div>
+                  <div className="input-container">
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={clientDetails.phone}
+                      className="input-field"
+                      onChange={handleClientChange}
+                    />
+                  </div>
+                </div>
+
                 <div className="InvoiceDetails">
                   <div className="InvoiceDetailsText">Client Email</div>
                   <div className="input-container">
@@ -217,10 +240,10 @@ const CreateInvoice = () => {
                       value={clientDetails.email}
                       className="input-field"
                       onChange={handleClientChange}
-                      placeholder="Client Email"
                     />
                   </div>
                 </div>
+
                 <div className="InvoiceDetails">
                   <div className="InvoiceDetailsText">Client Address</div>
                   <div className="input-container">
@@ -230,7 +253,6 @@ const CreateInvoice = () => {
                       value={clientDetails.address}
                       className="input-field"
                       onChange={handleClientChange}
-                      placeholder="Client Address"
                     />
                   </div>
                 </div>
@@ -241,15 +263,70 @@ const CreateInvoice = () => {
             <div className="item-details2">Item Details</div>
             <div className="TextDetails">Details item with more info</div>
           </div>
-          <OrderTable />
+          <OrderTable
+            items={listItems}
+            onItemChange={handleItemChange}
+            onAddItem={addItem}
+            onRemoveItem={removeItem}
+          />
+          <div className="subTotalDiv">
+            <div className="subTotalDiv">
+              <div className="TextG">Subtotal </div>
+              <div className="priceText">${invoiceDetails.subTotal}</div>
+            </div>
+          </div>
+          <div className="subTotalDiv">
+            <div className="TextG">Tax (%)</div>
+            {isTaxInputVisible ? (
+              <input
+                type="number"
+                className="InputData"
+                name="tax"
+                value={invoiceDetails.tax}
+                onChange={handleInvoiceChange}
+                onBlur={() => setIsTaxInputVisible(false)}
+                autoFocus
+                placeholder="Enter tax (e.g., 10)"
+              />
+            ) : (
+              <div
+                className="addButton"
+                onClick={() => setIsTaxInputVisible(true)}
+              >
+                Add
+              </div>
+            )}
+          </div>
+          <div className="subTotalDiv">
+            <div className="TextG">Discount </div>
+            {isDiscountInputVisible ? (
+              <input
+                type="number"
+                className="InputData"
+                name="discount"
+                value={invoiceDetails.discount}
+                onChange={handleInvoiceChange}
+                onBlur={() => setIsDiscountInputVisible(false)}
+                autoFocus
+                placeholder="Enter discount (e.g. 10"
+              />
+            ) : (
+              <div
+                className="addButton"
+                onClick={() => setIsDiscountInputVisible(true)}
+              >
+                Add
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <div>
         <div className="hidden" ref={previewRef}>
           <PreviewInvoice
             user={user}
-            client={client}
-            invoice={invoice}
+            client={clientDetails}
+            invoice={invoiceDetails}
             pageType="A4"
             list={listItems}
           />
@@ -257,8 +334,8 @@ const CreateInvoice = () => {
 
         <PreviewInvoice
           user={user}
-          client={client}
-          invoice={invoice}
+          client={clientDetails}
+          invoice={invoiceDetails}
           pageType="A6"
           list={listItems}
         />
@@ -271,14 +348,21 @@ const CreateInvoice = () => {
             onClick={handleDownload}
           />
         </div>
+        <div className="saveInvoice">
+          <CustomButton
+            icon={download}
+            text="Save Invoice"
+            onClick={handleSubmit}
+          />
+        </div>
       </div>
       {isOpen && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content">
             <PreviewInvoice
               user={user}
-              client={client}
-              invoice={invoice}
+              client={clientDetails}
+              invoice={invoiceDetails}
               pageType="A4"
               list={listItems}
             />

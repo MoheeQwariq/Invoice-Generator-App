@@ -6,15 +6,16 @@ import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import InputField from "../../components/inputField";
 import { validateUser } from "../../utils/validation";
 
-import { IlogIn, IUser } from "../../types";
+import {IUser} from "../../types";
 import Logo from "../../assets/PayInvo.png";
+import { useUserContext } from "../../provider/UserContext";
 
-const Login = (props: IlogIn) => {
+const Login = () => {
   const navigate = useNavigate();
-  const initialUser: IUser = { email: "", password: "" };
-  const initialError = { emailError: "", passwordError: "" };
-  const [user, setUser] = useState(initialUser);
-  const [errors, setErrors] = useState(initialError);
+  const { state, dispatch } = useUserContext();
+
+  const [user, setUser] = useState<IUser>({ email: "", password: "", name: "", phone: "", address: "" });
+  const [errors, setErrors] = useState({ emailError: "", passwordError: "" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -27,9 +28,13 @@ const Login = (props: IlogIn) => {
     setErrors(validationErrors);
 
     if (!validationErrors.emailError && !validationErrors.passwordError) {
-      if (checkUserInLocalStorage(user)) {
-        props.onLogin();
-        navigate("/CreateInvoice");
+      const loggedInUser = state.users.find(
+        (u) => u.email === user.email && u.password === user.password
+      );
+
+      if (loggedInUser) {
+        dispatch({ type: "LOGIN", payload: loggedInUser });
+        navigate("/CreateInvoice"); // Redirect after login
       } else {
         setErrors({
           emailError: "Invalid email",
@@ -39,19 +44,6 @@ const Login = (props: IlogIn) => {
     }
   };
 
-  const checkUserInLocalStorage = (user: IUser) => {
-    const storedUsers = localStorage.getItem("users");
-
-    if (!storedUsers) return false;
-
-    const usersArray = JSON.parse(storedUsers);
-    const existingUser = usersArray.find(
-      (u: IUser) => u.email === user.email && u.password === user.password
-    );
-
-    if (existingUser) return true;
-    return false;
-  };
 
   return (
     <div className="login-page">

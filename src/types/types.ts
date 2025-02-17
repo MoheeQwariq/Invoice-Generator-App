@@ -1,12 +1,40 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
-export type FormData = {
+export interface TableRow {
+  name: string;
+  price: number;
+  quantity: number;
+}
+
+export type IInvoice = {
+  invoiceId: string;
+  dueDate: string;
+  issueDate: string;
+  status: boolean;
+  paymentMethod: string;
+  items: TableRow[];
+  subTotal:number;
+  discount:number;
+  tax:number;
+};
+
+export type IUser = {
   name: string;
   email: string;
   password: string;
   phone: string;
   address: string;
+  invoices: IInvoice[];
+  currentInvoice?: IInvoice | null;
 };
+
+export type Action =
+  | { type: "STORE_LOCAL_STORAGE"; payload: IUser[] }
+  | { type: "ADD_USER"; payload: IUser }
+  | { type: "LOGIN"; payload: IUser }
+  | { type: "LOGOUT" }
+  | { type: "ADD_INVOICE"; payload: IInvoice }
+  | { type: "SET_CURRENT_INVOICE"; payload: IInvoice | null };
 
 export type InputFieldProps = {
   type: string;
@@ -28,20 +56,6 @@ export type Errors = {
   address: string;
 };
 
-export interface IUser {
-  email: string;
-  password: string;
-}
-
-export interface TableRow {
-  name: string;
-  price: number;
-  quantity: number;
-}
-
-export interface IlogIn {
-  onLogin: () => void;
-}
 export type ButtonProps = {
   to: string;
   name: string;
@@ -50,13 +64,6 @@ export type ButtonProps = {
   onClick: (item: string) => void;
 };
 
-export interface IBusinessMan {
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-}
-
 export interface IClient {
   name: string;
   email: string;
@@ -64,16 +71,24 @@ export interface IClient {
   address: string;
 }
 
-export interface IInvoice {
-  InvoiceId: string;
-  issueDate: string;
-  dueDate: string;
-  status: boolean;
-  paymentMethod: string;
+export interface IOrderTable {
+  items: TableRow[];
+  onItemChange: (
+    index: number,
+    field: keyof TableRow,
+    value: string | number
+  ) => void;
+  onRemoveItem: (index: number) => void;
+  onAddItem: () => void;
+}
+
+export interface IState {
+  users: IUser[];
+  loggedInUser: IUser | null;
 }
 
 export interface IPreview {
-  user: IBusinessMan;
+  user: IUser;
   client: IClient;
   invoice: IInvoice;
   pageType: string;
