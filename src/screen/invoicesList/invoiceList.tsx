@@ -8,8 +8,8 @@ import useDelete from "../../hook/useDelete";
 import useInvoiceFilter from "../../hook/useInvoiceFilter";
 import { useNavigate } from "react-router-dom";
 import useSearch from "../../hook/useSearch";
-import SearchBar from "../../components/search";
 import InvoiceCard from "../../components/invoiceCards";
+import SearchBar from "../../components/Search";
 
 const sampleInvoices: InvoiceCardProps[] = [
   {
@@ -58,7 +58,7 @@ const CardList: React.FC = () => {
   const navigate = useNavigate();
   const [showFilter, setShowFilter] = useState(false);
   const [invoiceList, setInvoiceList] =
-    useState<InvoiceCardProps[]>(sampleInvoices); // Keeping the state of invoices
+    useState<InvoiceCardProps[]>(sampleInvoices);
 
   const {
     invoiceListDelte,
@@ -69,9 +69,9 @@ const CardList: React.FC = () => {
   } = useDelete(invoiceList);
 
   const [mainInvoiceList, setMainInvoiceList] =
-    useState<InvoiceCardProps[]>(sampleInvoices); // Keeping the state of invoices
-  // const { filterType, setFilterType, filterValue, setFilterValue, filteredInvoices, applyFilter } = useInvoiceFilter(mainInvoiceList);
-  const {
+    useState<InvoiceCardProps[]>(sampleInvoices);
+
+    const {
     filterType,
     setFilterType,
     filterValue,

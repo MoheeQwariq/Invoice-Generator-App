@@ -10,13 +10,17 @@ import {
 import "./signUp.css";
 import { validateForm } from "../../utils/validation";
 import AccountImage from "../../assets/signup.svg";
-import InputField from "../../components/inputField/InputField";
-
+import InputField from "../../components/inputField";
 import Logo from "../../assets/PayInvo.png";
+import { IUser } from "../../types";
+import { useUserContext } from "../../provider";
 
-import { FormData, IlogIn } from "../../types";
-const SignUp = (props: IlogIn) => {
-  const [formData, setFormData] = useState<FormData>({
+
+const SignUp = () => {
+  const { state, dispatch } = useUserContext();
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState<IUser>({
     name: "",
     email: "",
     password: "",
@@ -24,12 +28,12 @@ const SignUp = (props: IlogIn) => {
     address: "",
   });
 
-  const [errors, setErrors] = useState<Partial<FormData>>({});
-  const navigate = useNavigate();
+  const [errors, setErrors] = useState<Partial<IUser>>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+
     setErrors((prevErrors) => ({
       ...prevErrors,
       [name]: validateForm({ ...formData, [name]: value })[name],
@@ -38,31 +42,18 @@ const SignUp = (props: IlogIn) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const validationErrors = validateForm(formData);
+    setErrors(validationErrors);
 
-    const formErrors = validateForm(formData);
-    setErrors(formErrors);
-
-    if (Object.values(formErrors).every((error) => !error)) {
-      console.log("Form is valid, proceed with sign-up.");
-
-      const users: FormData[] = JSON.parse(
-        localStorage.getItem("users") || "[]"
-      );
-
-      if (users.some((user) => user.email === formData.email)) {
-        console.log("This email is already registered.");
+    if (Object.values(validationErrors).every((error) => !error)) {
+      if (state.users.some((user) => user.email === formData.email)) {
         setErrors((prev) => ({ ...prev, email: "Email already in use" }));
         return;
       }
 
-      users.push(formData);
-      localStorage.setItem("users", JSON.stringify(users));
-
-      console.log("User registered successfully.");
-      props.onLogin();
-      navigate("/CreateInvoice", { state: { user: formData } });
-    } else {
-      console.log("Form contains errors.");
+      dispatch({ type: "ADD_USER", payload: formData });
+      dispatch({ type: "LOGIN", payload: formData });
+      navigate("/CreateInvoice");
     }
   };
 

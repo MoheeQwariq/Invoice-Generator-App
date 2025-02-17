@@ -4,24 +4,24 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { useState } from "react";
 import SignUp from "./screen/signUp";
 import Login from "./screen/login";
 import CreateInvoice from "./screen/createInvoice";
 import Navbar from "./components/navbar";
 import Sidebar from "./components/sidebar";
 import CardList from "./screen/invoicesList";
+import { useUserContext } from "./provider";
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { state, dispatch } = useUserContext();
 
   const handleLogout = () => {
-    setIsAuthenticated(false);
+    dispatch({ type: "LOGOUT" });
   };
 
   return (
     <Router>
-      {isAuthenticated && (
+      {state.loggedInUser && (
         <>
           <Sidebar onLogout={handleLogout} />
           <Navbar />
@@ -29,24 +29,17 @@ const App = () => {
       )}
       <Routes>
         <Route path="/" element={<Navigate to="/Login" />} />
-        <Route
-          path="/Login"
-          element={<Login onLogin={() => setIsAuthenticated(true)} />}
-        />
-        <Route
-          path="/SignUp"
-          element={<SignUp onLogin={() => setIsAuthenticated(true)} />}
-        />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/SignUp" element={<SignUp />} />
         <Route
           path="/CreateInvoice"
           element={
-            isAuthenticated ? <CreateInvoice /> : <Navigate to="/Login" />
+            state.loggedInUser ? <CreateInvoice /> : <Navigate to="/Login" />
           }
         />
-
         <Route
           path="/CardList"
-          element={isAuthenticated ? <CardList /> : <Navigate to="/Login" />}
+          element={state.loggedInUser ? <CardList /> : <Navigate to="/Login" />}
         />
       </Routes>
     </Router>

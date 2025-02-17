@@ -100,22 +100,15 @@
 }
 
 .itemsTable {
-  width: 100%;
+  width: 80%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 0.8em;
+  font-size: 0.6em;
 }
 
 .head {
   color: #6a1b9a;
   border: none;
-}
-
-.itemsTable {
-  width: 90%;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: 0.8em;
 }
 
 .head {
@@ -130,12 +123,12 @@
 
 .itemsTable th:not(:first-child),
 .itemsTable td:not(:first-child) {
-  width: 20%;
+  width: 30%;
 }
 
-.result{
-  border-top:1px solid black;;
+.result {
+  border-top: 1px solid black;
 }
-.finalTotal{
+.finalTotal {
   color: #6a1b9a;
 }

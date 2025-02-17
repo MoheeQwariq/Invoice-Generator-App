@@ -1,4 +1,4 @@
-import { Errors, IUser } from '../types';
+import { Errors, IUser} from "../types";
 
 export const validateForm = (data: { [key: string]: string }) => {
   const errors: Errors = {
